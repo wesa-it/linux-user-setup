@@ -114,9 +114,24 @@ Package: ```piper```
 lutris from Official AUR  
 Package: ```lutris```
 
-osu!stable  
-Search osu!, then select Stable  
+<hr>
 
+### Grand Theft Auto V
+GTA5 from lutris  
+Use ```R*G Launcher version```  
+
+Instructions: Just install ```R*G Launcher```  
+After that install ```GTA5``` inside the ```R*G Launcher```  
+
+Done!
+
+<hr>
+
+### osu!
+osu!stable  
+Source: ```https://github.com/NelloKudo/osu-winello```  
+
+Follow instructions.  
 <hr>
 
 ### Discord
