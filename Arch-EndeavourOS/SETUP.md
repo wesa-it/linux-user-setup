@@ -32,6 +32,39 @@ sudo swapon /swapfile
 
 <hr>
 
+### Samba Setup
+
+1. Open Dolphin File Explorer  
+2. Searchbar > Enter smb://1.2.3.4/sambaName  
+3. Rightclick > Add  
+
+<hr>
+
+### Second Samsung SATA SSD Setup
+
+1. Format to ext4  
+2. Command: ```sudo mkdir -p /mnt/ssd```  
+3. Command: ```sudo chmod -R 700 /mnt/ssd && sudo chown -R joshua:joshua /mnt/ssd``` 
+4. Command: ```blkid``` > Search UUID="xxx", Copy  
+5. Command: ```sudo nano /etc/fstab```  
+
+UUID is not the same after a format  
+```
+# Samsung Sata SSD 870 QVO
+UUID=xxx /mnt/ssd ext4 defaults 0 1
+
+```
+
+6. Command: ```sudo mount -a```
+7. Command: ```systemctl daemon-reload```
+
+eventually do a full restart  
+
+Done!  
+Now for example, we can use the sata ssd for the steam library  
+
+<hr>
+
 ### EarlyOOM | No lag
 earlyoom from AUR  
 Package: ```earlyoom```
@@ -125,6 +158,12 @@ Now Proton Experimental will installed
 ### Heroic
 heroic from AUR  
 Package: ```heroic-games-launcher-bin```
+
+<hr>
+
+### Gparted
+gparted from Official AUR  
+Package: ```gparted```
 
 <hr>
 
