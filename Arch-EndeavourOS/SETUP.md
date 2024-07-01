@@ -7,6 +7,12 @@ Solution: ```System Settings > Input Devices > Keyboard,  Hardware tab, NumLock 
 
 <hr>
 
+### Bluetooth
+CLI only  
+Solution: ```sudo systemctl start bluetooth && sudo systemctl enable bluetooth```
+
+<hr>
+
 ### apt wrapper for pacman
 aptpac from GitHub  
 Source: ```https://github.com/Itai-Nelken/aptpac/blob/main/bash-edition/aptpac.sh```  
