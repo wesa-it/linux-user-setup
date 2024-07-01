@@ -101,3 +101,9 @@ whatsapp from AUR
 Package: ```whatsapp-for-linux-bin```
 
 <hr>
+
+### Neofetch/Fastfetch
+fastfetch from Official AUR  
+Package: ```fastfetch```
+
+<hr>
