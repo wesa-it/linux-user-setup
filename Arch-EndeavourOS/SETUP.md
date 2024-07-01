@@ -91,7 +91,13 @@ Package: ```prismlauncher```
 <hr>
 
 ### AnyDesk, RustDesk
-rustdeak from AUR  
+rustdesk from AUR  
 Package: ```rustdesk-bin```
+
+<hr>
+
+### WhatsApp
+whatsapp from AUR  
+Package: ```whatsapp-for-linux-bin```
 
 <hr>
