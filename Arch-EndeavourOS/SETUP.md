@@ -65,6 +65,9 @@ Package: ```piper```
 lutris from Official AUR  
 Package: ```lutris```
 
+osu!stable  
+Search osu!, then select Stable  
+
 <hr>
 
 ### Discord
@@ -124,3 +127,4 @@ heroic from AUR
 Package: ```heroic-games-launcher-bin```
 
 <hr>
+
