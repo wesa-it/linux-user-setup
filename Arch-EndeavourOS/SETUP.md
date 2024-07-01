@@ -107,3 +107,9 @@ fastfetch from Official AUR
 Package: ```fastfetch```
 
 <hr>
+
+### Steam
+steam from Official AUR  
+Package: ```steam```
+
+<hr>
