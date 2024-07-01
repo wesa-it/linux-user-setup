@@ -78,6 +78,9 @@ Package: ```vesktop-bin```
 opentabletdriver from AUR (git is more up2date, this will build it)  
 Package: ```opentabletdriver-git```
 
+Fix conflicts with wacom  
+Command: ```echo "blacklist wacom" | sudo tee -a /etc/modprobe.d/blacklist.conf && sudo rmmod wacom```
+
 <hr>
 
 ### PrismLauncher (Minecraft OSS Launcher)
