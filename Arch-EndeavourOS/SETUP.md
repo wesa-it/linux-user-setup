@@ -7,6 +7,23 @@ Solution: ```System Settings > Input Devices > Keyboard,  Hardware tab, NumLock 
 
 <hr>
 
+### apt wrapper for pacman
+aptpac from GitHub  
+Source: ```https://github.com/Itai-Nelken/aptpac/blob/main/bash-edition/aptpac.sh```  
+
+Add this to ```~/.bash_profile```  
+```
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
+fi
+```
+
+Paste the script in ```~/bin```  
+Set permissions ```chmod +x ~/bin/apt```
+
+<hr>
+
 ### SWAP Setup
 
 Disable SWAP in GParted or via CLI  
