@@ -12,7 +12,7 @@ aptpac from GitHub
 Source: ```https://github.com/Itai-Nelken/aptpac/blob/main/bash-edition/aptpac.sh```  
 
 Add this to ```~/.bash_profile```  
-```
+```bash
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
@@ -28,14 +28,14 @@ Set permissions ```chmod +x ~/bin/apt```
 
 Disable SWAP in GParted or via CLI  
 
-```
+```bash
 sudo swapoff /swapfile
 sudo rm -f /swapfile
 
 sudo dd if=/dev/zero of=/swapfile bs=1024 count=8388608 # 8GB
 ```
 
-```
+```bash
 ls -l /swapfile 
 sudo chmod 600 /swapfile 
 sudo mkswap /swapfile
