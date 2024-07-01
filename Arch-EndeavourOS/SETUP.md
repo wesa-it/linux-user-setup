@@ -110,6 +110,17 @@ Package: ```fastfetch```
 
 ### Steam
 steam from Official AUR  
-Package: ```steam```
+Package: ```steam```  
+
+Add windows games compatibility  
+Settings > Compatibility > Enable Steam Play for all other titles  
+Restart Steam  
+Now Proton Experimental will installed  
+
+<hr>
+
+### Heroic
+heroic from AUR  
+Package: ```heroic-games-launcher-bin```
 
 <hr>
