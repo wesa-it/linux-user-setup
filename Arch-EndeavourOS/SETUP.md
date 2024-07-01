@@ -33,10 +33,10 @@ sudo swapoff /swapfile
 sudo rm -f /swapfile
 
 sudo dd if=/dev/zero of=/swapfile bs=1024 count=8388608 # 8GB
-sudo chmod 600 /swapfile
 ```
 
-```ls -l /swapfile 
+```
+ls -l /swapfile 
 sudo chmod 600 /swapfile 
 sudo mkswap /swapfile
 sudo swapon /swapfile
@@ -69,7 +69,6 @@ UUID is not the same after a format
 ```
 # Samsung Sata SSD 870 QVO
 UUID=xxx /mnt/ssd ext4 defaults 0 1
-
 ```
 
 6. Command: ```sudo mount -a```
