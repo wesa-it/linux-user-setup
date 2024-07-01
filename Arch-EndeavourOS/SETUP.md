@@ -40,7 +40,7 @@ Package: ```earlyoom```
 
 ### AMD GPU GUI
 LACT from AUR  
-Package: ```unknown```
+Package: ```lact```
 
 <hr>
 
