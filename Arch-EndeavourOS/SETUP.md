@@ -145,6 +145,9 @@ Follow instructions.
 Vesktop from AUR  
 Package: ```vesktop-bin```
 
+Discord from Official AUR  
+Package: ```discord```  
+
 <hr>
 
 ### Tablet Driver for Wacom
@@ -169,6 +172,36 @@ Package: ```rustdesk-bin```
 
 <hr>
 
+### Parsec
+parsec from AUR  
+Package: ```parsec-bin```
+
+<hr>
+
+### Remote Desktop (GUI)
+remmina, freerdp and rdesktop from Official AUR  
+Package: ```remmina freerdp rdesktop```  
+
+remmina rdesktop plugin from AUR  
+Package: ```remmina-plugin-rdesktop```  
+
+<hr>
+
+### Java
+Java 21 from Official AUR  
+Package: ```jdk21-openjdk```  
+
+After that, execute ```archlinux-java set java21-openjdk```,  
+to select java as default one  
+
+<hr>
+
+### Spotify
+Spotify from Official AUR  
+Package: ```spotify-launcher```
+
+<hr>
+
 ### WhatsApp
 whatsapp from AUR  
 Package: ```whatsapp-for-linux-bin```
@@ -189,6 +222,20 @@ Add windows games compatibility
 Settings > Compatibility > Enable Steam Play for all other titles  
 Restart Steam  
 Now Proton Experimental will installed  
+
+Another hotfix for fast Download  
+Create this file ```~/.steam/steam/steam_dev.cfg```  
+Paste this:  
+```
+@nClientDownloadEnableHTTP2PlatformLinux 0
+@fDownloadRateImprovementToAddAnotherConnection 1.0
+```  
+
+<hr>
+
+### Speedtest (TCP, better one)
+speedtest++ from AUR  
+Package: ```speedtest++```  
 
 <hr>
 
