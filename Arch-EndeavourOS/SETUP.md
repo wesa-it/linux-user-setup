@@ -8,16 +8,25 @@ Solution: ```System Settings > Input Devices > Keyboard,  Hardware tab, NumLock 
 <hr>
 
 ### Bluetooth
+
 CLI only  
 Solution: ```sudo systemctl start bluetooth && sudo systemctl enable bluetooth```
 
 <hr>
 
+### AMD Video Hardware acceleration
+mesa-vdpau and libva-mesa-driver from Official AUR  
+Package: ```mesa-vdpau libva-mesa-driver```  
+
+After that e.g Parsec will have a Hardware decoder
+
 ### apt wrapper for pacman
+
 aptpac from GitHub  
 Source: ```https://github.com/Itai-Nelken/aptpac/blob/main/bash-edition/aptpac.sh```  
 
 Add this to ```~/.bash_profile```  
+
 ```bash
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
@@ -27,6 +36,31 @@ fi
 
 Paste the script in ```~/bin```  
 Set permissions ```chmod +x ~/bin/apt```
+
+<hr>
+
+### Linux Zen Kernel
+
+linux-zen linux-zen-headers from Official AUR
+Package: ```linux-zen linux-zen-headers```
+
+> /efi/loader/loader.conf
+
+```
+default 7602d2d38fec4acdb68f61134ac854d6*
+timeout 5
+console-mode auto
+reboot-for-bitlocker 1
+```
+
+to
+
+```
+default 7602d2d38fec4acdb68f61134ac854d6*-zen*
+timeout 5
+console-mode auto
+reboot-for-bitlocker 1
+```
 
 <hr>
 
@@ -72,6 +106,7 @@ sudo swapon /swapfile
 5. Command: ```sudo nano /etc/fstab```  
 
 UUID is not the same after a format  
+
 ```
 # Samsung Sata SSD 870 QVO
 UUID=xxx /mnt/ssd ext4 defaults 0 1
@@ -87,19 +122,83 @@ Now for example, we can use the sata ssd for the steam library
 
 <hr>
 
+### Secondary NVIDIA GPU Setup
+
+You need to block it entirely from the system to setup GPU passthrough
+
+> /etc/modprobe.d/blacklist-nvidia.conf
+
+```bash
+blacklist nouveau
+options nouveau modeset=0
+```
+
+Add this additional line
+
+> /etc/dracut.conf.d/eos-defaults.conf
+
+```bash
+omit_drivers+=" nouveau "
+```
+
+After that, regenerate dracut with this command
+
+```bash
+dracut -f --regenerate-all
+```
+
+You're done!
+
+### VirtualBox/QEMU/VM Setup
+
+libvirt virt-manager qemu-desktop dnsmasq iptables-nft bridge-utils dmidecode from Official AUR
+
+Package: ```libvirt virt-manager qemu-desktop dnsmasq iptables-nft bridge-utils dmidecode```
+
+
+
+After installing the packages, you need to update the firewall for libvirt
+
+Command: ```sudo firewall-cmd --reload```
+
+
+
+Enable and start libvirtd service
+
+Command: ```systemctl enable libvirtd && systemctl start libvirtd```
+
+
+
+GPU Passtrough, you need Linux-zen Kernel see <a href="#Linux-Zen-Kernel">#Linux Zen Kernel</a>
+
+<hr>
+
 ### EarlyOOM | No lag
+
 earlyoom from AUR  
 Package: ```earlyoom```
 
 <hr>
 
 ### AMD GPU GUI
+
 LACT from AUR  
 Package: ```lact```
 
 <hr>
 
+### MarkText
+
+MarkText from AUR
+
+Package: ```marktext```  
+
+You can rightclick the file in Dolphin and open the file
+
+<hr>
+
 ### Logitech G533 Wireless Headset
+
 HeadsetControl from AUR (this will build it, but its pretty fast)  
 Package: ```headsetcontrol```  
 
@@ -111,18 +210,21 @@ Also uncheck ```acoustic feedback when changing``` in sound settings
 <hr>
 
 ### Logitech G305 Wireless Mouse (DPI 500)
+
 Piper from Official AUR  
 Package: ```piper```
 
 <hr>
 
 ### Lutris
+
 lutris from Official AUR  
 Package: ```lutris```
 
 <hr>
 
 ### Grand Theft Auto V
+
 GTA5 from lutris  
 Use ```R*G Launcher version```  
 
@@ -134,10 +236,12 @@ Done!
 <hr>
 
 ### osu!
+
 osu!stable  
 Source: ```https://github.com/NelloKudo/osu-winello```  
 
 Follow instructions.  
+
 <hr>
 
 ### Discord
@@ -151,6 +255,7 @@ Package: ```discord```
 <hr>
 
 ### Tablet Driver for Wacom
+
 opentabletdriver from AUR (git is more up2date, this will build it)  
 Package: ```opentabletdriver-git```
 
@@ -160,6 +265,7 @@ Command: ```echo "blacklist wacom" | sudo tee -a /etc/modprobe.d/blacklist.conf 
 <hr>
 
 ### PrismLauncher (Minecraft OSS Launcher)
+
 prismlauncher from AUR  
 The prismlauncher-bin package is broken on Arch. Build it yourself  
 Package: ```prismlauncher```
@@ -167,18 +273,21 @@ Package: ```prismlauncher```
 <hr>
 
 ### AnyDesk, RustDesk
+
 rustdesk from AUR  
 Package: ```rustdesk-bin```
 
 <hr>
 
 ### Parsec
+
 parsec from AUR  
 Package: ```parsec-bin```
 
 <hr>
 
 ### Remote Desktop (GUI)
+
 remmina, freerdp and rdesktop from Official AUR  
 Package: ```remmina freerdp rdesktop```  
 
@@ -188,6 +297,7 @@ Package: ```remmina-plugin-rdesktop```
 <hr>
 
 ### Java
+
 Java 21 from Official AUR  
 Package: ```jdk21-openjdk```  
 
@@ -197,24 +307,28 @@ to select java as default one
 <hr>
 
 ### Spotify
+
 Spotify from Official AUR  
 Package: ```spotify-launcher```
 
 <hr>
 
 ### WhatsApp
+
 whatsapp from AUR  
 Package: ```whatsapp-for-linux-bin```
 
 <hr>
 
 ### Neofetch/Fastfetch
+
 fastfetch from Official AUR  
 Package: ```fastfetch```
 
 <hr>
 
 ### Steam
+
 steam from Official AUR  
 Package: ```steam```  
 
@@ -226,28 +340,31 @@ Now Proton Experimental will installed
 Another hotfix for fast Download  
 Create this file ```~/.steam/steam/steam_dev.cfg```  
 Paste this:  
+
 ```
 @nClientDownloadEnableHTTP2PlatformLinux 0
 @fDownloadRateImprovementToAddAnotherConnection 1.0
-```  
+```
 
 <hr>
 
 ### Speedtest (TCP, better one)
+
 speedtest++ from AUR  
 Package: ```speedtest++```  
 
 <hr>
 
 ### Heroic
+
 heroic from AUR  
 Package: ```heroic-games-launcher-bin```
 
 <hr>
 
 ### Gparted
+
 gparted from Official AUR  
 Package: ```gparted```
 
 <hr>
-
