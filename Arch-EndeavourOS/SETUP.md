@@ -39,6 +39,10 @@ Set permissions ```chmod +x ~/bin/apt```
 
 <hr>
 
+### SSH Server
+SSH preinstalled  
+Command: ```sudo systemctl start sshd && sudo systemctl enable sshd```  
+
 ### Linux Zen Kernel
 
 linux-zen linux-zen-headers from Official AUR
@@ -171,6 +175,7 @@ Command: ```systemctl enable libvirtd && systemctl start libvirtd```
 
 GPU Passtrough, you need Linux-zen Kernel see <a href="#Linux-Zen-Kernel">#Linux Zen Kernel</a>
 
+Windows Germany ISO is not working, use International English one
 <hr>
 
 ### EarlyOOM | No lag
@@ -260,8 +265,10 @@ opentabletdriver from AUR (git is more up2date, this will build it)
 Package: ```opentabletdriver-git```
 
 Fix conflicts with wacom  
-Command: ```echo "blacklist wacom" | sudo tee -a /etc/modprobe.d/blacklist.conf && sudo rmmod wacom```
+Command: ```echo "blacklist wacom" | sudo tee -a /etc/modprobe.d/blacklist.conf && sudo rmmod wacom```  
 
+Start opentabletdriver daemon  
+Command: ```systemctl --user enable opentabletdriver.service --now```
 <hr>
 
 ### PrismLauncher (Minecraft OSS Launcher)
@@ -345,6 +352,9 @@ Paste this:
 @nClientDownloadEnableHTTP2PlatformLinux 0
 @fDownloadRateImprovementToAddAnotherConnection 1.0
 ```
+
+Download GE-Proton from Heroic Games Launcher.  
+Link GE-Proton to Steam dir: ```ln -s /home/joshua/.config/heroic/tools/proton/Proton-GE-latest/ /home/joshua/.local/share/Steam/compatibilitytools.d/```  
 
 <hr>
 
