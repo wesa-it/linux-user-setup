@@ -1,5 +1,10 @@
 ## Arch / EndeavourOS
 
+### Dualboot
+
+Time UTC/RTC Windows & Linux  
+Solution: ```sudo timedatectl set-local-rtc 1```
+
 ### KDE
 
 Enable Numpad  
