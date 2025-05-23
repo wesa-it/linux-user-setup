@@ -5,6 +5,13 @@
 Time UTC/RTC Windows & Linux  
 Solution: ```sudo timedatectl set-local-rtc 1```
 
+### VLC Media Player
+
+gparted from Official AUR  
+Package: ```vlc```
+
+DONT FORGET TO INSTALL ```live-media``` to watch fritz.box streams
+
 ### KDE
 
 Enable Numpad  
