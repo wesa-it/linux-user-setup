@@ -214,13 +214,16 @@ You can rightclick the file in Dolphin and open the file
 
 <hr>
 
-### Logitech G533 Wireless Headset
+### Logitech ~~G533~~ Pro X Wireless Headset
 
-HeadsetControl from AUR (this will build it, but its pretty fast)  
+HeadsetControl from AUR (this will build it, but its pretty fast) - Package is old. Still works
 Package: ```headsetcontrol```  
 
+HeadsetKontrol (GUI for Headsetcontrol) from AUR 
+Package: ```headsetkontrol```  
+
 HeadsetControl-NotificationD (from GitHub Manawyrm/headsetcontrol-notificationd)  
-Package: ```headsetcontrol-notificationd-git```  
+Package: ```headsetcontrol-notificationd-bash-git```  
 
 Also uncheck ```acoustic feedback when changing``` in sound settings
 
