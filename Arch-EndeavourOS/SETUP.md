@@ -245,6 +245,10 @@ don't forget to install wine.
 fix for Wine prefix endless loading.  
 Package: ```wine```  
 
+Gamemode from Official AUR  
+Package: ``` gamemode lib32-gamemode```  
+lib32-gamemode fixes error with lutris  
+
 <hr>
 
 ### Grand Theft Auto V
