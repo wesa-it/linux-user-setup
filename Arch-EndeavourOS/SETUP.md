@@ -240,6 +240,10 @@ Package: ```piper```
 
 lutris from Official AUR  
 Package: ```lutris```
+  
+don't forget to install wine.  
+fix for Wine prefix endless loading.  
+Package: ```wine```  
 
 <hr>
 
