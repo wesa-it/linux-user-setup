@@ -207,10 +207,18 @@ $ lspci -nnk | grep -iA 3 nvidia
 
 IOMMU groups needs to be seperated for VM  
 add this into options line:  
-> /efi/loader/loader.conf
+> /efi/loader/entries/8890fa3400f34a11bacc684fee5ef920-6.12.30-1-lts.conf (LTS kernel for example)  
 ```
 option ... pcie_acs_override=downstream,multifunction ...
 ```
+
+then execute  
+```
+$ dracut -f --regenerate-all
+```  
+
+Reboot.  
+
 
 Windows Germany ISO is not working, use International English one
 <hr>
