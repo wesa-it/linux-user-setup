@@ -205,6 +205,13 @@ $ lspci -nnk | grep -iA 3 nvidia
         Kernel modules: snd_hda_intel
 ```
 
+IOMMU groups needs to be seperated for VM  
+add this into options line:  
+> /efi/loader/loader.conf
+```
+option ... pcie_acs_override=downstream,multifunction ...
+```
+
 Windows Germany ISO is not working, use International English one
 <hr>
 
