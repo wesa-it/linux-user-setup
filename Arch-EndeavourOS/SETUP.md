@@ -190,8 +190,20 @@ Command: ```systemctl enable libvirtd && systemctl start libvirtd```
 
 
 
-GPU Passtrough, ~~~~you need Linux-zen Kernel see <a href="#Linux-Zen-Kernel">#Linux Zen Kernel</a>~~
+GPU Passtrough, ~~you need Linux-zen Kernel see <a href="#Linux-Zen-Kernel">#Linux Zen Kernel</a>~~  
 Every kernel works.
+
+Search for nvidia in lspci  
+```
+$ lspci -nnk | grep -iA 3 nvidia
+04:00.0 VGA compatible controller [0300]: NVIDIA Corporation GK208B [GeForce GT 710] [10de:128b] (rev a1)
+        Subsystem: Gigabyte Technology Co., Ltd Device [1458:36ed]
+        Kernel modules: nouveau
+04:00.1 Audio device [0403]: NVIDIA Corporation GK208 HDMI/DP Audio Controller [10de:0e0f] (rev a1)
+        Subsystem: Gigabyte Technology Co., Ltd Device [1458:36ed]
+        Kernel driver in use: snd_hda_intel
+        Kernel modules: snd_hda_intel
+```
 
 Windows Germany ISO is not working, use International English one
 <hr>
