@@ -191,7 +191,7 @@ Command: ```systemctl enable libvirtd && systemctl start libvirtd```
 
 
 GPU Passtrough, ~~you need Linux-zen Kernel see <a href="#Linux-Zen-Kernel">#Linux Zen Kernel</a>~~  
-Every kernel works.
+~~Every kernel works.~~ Edit: it does not.
 
 Search for nvidia in lspci  
 ```
@@ -207,7 +207,11 @@ $ lspci -nnk | grep -iA 3 nvidia
 
 IOMMU groups needs to be seperated for VM  
 add this into options line:  
-> /efi/loader/entries/8890fa3400f34a11bacc684fee5ef920-6.12.30-1-lts.conf (LTS kernel for example)  
+> /efi/loader/entries/~~8890fa3400f34a11bacc684fee5ef920-6.12.30-1-lts.conf (LTS kernel for example)~~  
+Linux Zen and Linux-vfio is the only working kernel that works.
+See: https://wiki.archlinux.org/title/PCI_passthrough_via_OVMF#Bypassing_the_IOMMU_groups_(ACS_override_patch)
+> You will need a kernel with the patch applied. The easiest method to acquiring this is through the linux-zen or linux-vfio AUR package.  
+
 ```
 option ... pcie_acs_override=downstream,multifunction ...
 ```
