@@ -190,7 +190,8 @@ Command: ```systemctl enable libvirtd && systemctl start libvirtd```
 
 
 
-GPU Passtrough, you need Linux-zen Kernel see <a href="#Linux-Zen-Kernel">#Linux Zen Kernel</a>
+GPU Passtrough, ~~~~you need Linux-zen Kernel see <a href="#Linux-Zen-Kernel">#Linux Zen Kernel</a>~~
+Every kernel works.
 
 Windows Germany ISO is not working, use International English one
 <hr>
