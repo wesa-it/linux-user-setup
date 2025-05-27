@@ -224,6 +224,12 @@ then execute
 $ dracut -f --regenerate-all
 ```  
 
+Looking glass:  
+Install kvmfr dkms  
+```$ yay -S kvmfr-dkms-git```
+then  
+```$ sudo modprobe kvmfr```
+
 Reboot.  
 
 
