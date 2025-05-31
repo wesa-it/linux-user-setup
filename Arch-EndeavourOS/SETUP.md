@@ -1,5 +1,9 @@
 ## Arch / EndeavourOS
 
+### Create bootable usb stick
+Use woeusb-ng (AUR)  
+Package ```woeusb-ng```  
+
 ### Dualboot
 
 Time UTC/RTC Windows & Linux  
