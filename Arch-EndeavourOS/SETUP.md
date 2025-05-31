@@ -35,7 +35,9 @@ Solution: ```sudo systemctl start bluetooth && sudo systemctl enable bluetooth``
 mesa-vdpau and libva-mesa-driver from Official AUR  
 Package: ```mesa-vdpau libva-mesa-driver```  
 
-After that e.g Parsec will have a Hardware decoder
+After that e.g Parsec will have a Hardware decoder.  
+Idk buddy said that but this is not working.  
+Use looking-glass.io and look instructions.
 
 ### apt wrapper for pacman
 
@@ -57,7 +59,7 @@ Set permissions ```chmod +x ~/bin/apt```
 <hr>
 
 ### SSH Server
-SSH preinstalled  
+SSH is preinstalled and needs to be activated manually  
 Command: ```sudo systemctl start sshd && sudo systemctl enable sshd```  
 
 ### Linux Zen Kernel
@@ -331,9 +333,10 @@ Package: ```discord```
 ### Tablet Driver for Wacom
 
 opentabletdriver from AUR (git is more up2date, this will build it)  
-Package: ```opentabletdriver-git```
+Package: ```opentabletdriver-git``` (dont use it dotnet is broken, use opentabletdriver
 
 Fix conflicts with wacom  
+Huion is broken dont use it.  
 Command: ```echo "blacklist wacom" | sudo tee -a /etc/modprobe.d/blacklist.conf && sudo rmmod wacom```  
 
 Start opentabletdriver daemon  
