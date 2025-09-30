@@ -71,6 +71,13 @@ Command: ```sudo systemctl start sshd && sudo systemctl enable sshd```
 linux-zen linux-zen-headers from Official AUR
 Package: ```linux-zen linux-zen-headers```
 
+Grub:  
+
+```
+sudo grub-mkconfig -o /boot/grub/grub.cfg
+```
+   
+SystemD:  
 > /efi/loader/loader.conf
 
 ```
