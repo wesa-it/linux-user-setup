@@ -466,3 +466,10 @@ gparted from Official AUR
 Package: ```gparted```
 
 <hr>
+
+### Telegram / materialgram
+
+gparted from AUR  
+Package: ```materialgram-bin```
+
+<hr>
