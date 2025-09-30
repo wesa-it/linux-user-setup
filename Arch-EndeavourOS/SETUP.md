@@ -1,5 +1,10 @@
 ## Arch / EndeavourOS
 
+### Grub theme  
+https://github.com/jacksaur/Gorgeous-GRUB  
+https://www.pling.com/p/1414997/  
+Download this and execute the sh file  
+  
 ### Create bootable usb stick
 Use woeusb-ng (AUR)  
 Package ```woeusb-ng```  
