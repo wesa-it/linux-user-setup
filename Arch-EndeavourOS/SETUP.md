@@ -15,7 +15,7 @@ Time UTC/RTC Windows & Linux
 Solution: ```sudo timedatectl set-local-rtc 1```
 
 ### Voicemeeter for Linux
-Package: ```lsp-plugins calf easy-effects```  
+Package: ```lsp-plugins calf easyeffects```  
 
 ![easyeffects](https://github.com/user-attachments/assets/1849a375-0f2a-4c32-8c08-38293b27d0d2)
 
