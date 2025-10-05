@@ -1,514 +1,28 @@
-<img src="https://r2cdn.perplexity.ai/pplx-full-logo-primary-dark%402x.png" style="height:64px;margin-right:32px"/>
+# 🐧 Arch/EndeavourOS Setup Notes
 
-# \#\# Arch / EndeavourOS
-
-### Grub theme
-
-[https://github.com/jacksaur/Gorgeous-GRUB](https://github.com/jacksaur/Gorgeous-GRUB)
-[https://www.pling.com/p/1414997/](https://www.pling.com/p/1414997/)
-Download this and execute the bash file
-
-### Create bootable usb stick
-
-Use woeusb-ng (AUR)
-Package ```woeusb-ng```
-
-### Dualboot
-
-Time UTC/RTC Windows \& Linux
-Solution: ```sudo timedatectl set-local-rtc 1```
-
-### Voicemeeter for Linux
-
-Package: ```lsp-plugins calf easyeffects```
-
-![easyeffects](https://github.com/user-attachments/assets/1849a375-0f2a-4c32-8c08-38293b27d0d2)
-
-### VLC Media Player
-
-gparted from Official AUR
-Package: ```vlc```
-
-DONT FORGET TO INSTALL ```live-media``` to watch fritz.box streams
-
-### KDE
-
-Enable Numpad
-Solution: ```System Settings > Input Devices > Keyboard,  Hardware tab, NumLock on Plasma Startup section, choose NumLock behavior```
-
-<hr>
-
-### Bluetooth
-
-CLI only
-Solution: ```sudo systemctl start bluetooth && sudo systemctl enable bluetooth```
-
-<hr>
-
-### AMD Video Hardware acceleration
-
-mesa-vdpau and libva-mesa-driver from Official AUR
-Package: ```mesa-vdpau libva-mesa-driver```
-
-After that e.g Parsec will have a Hardware decoder.
-Idk buddy said that but this is not working.
-Use looking-glass.io and look instructions.
-
-### apt wrapper for pacman
-
-aptpac from GitHub
-Source: ```https://github.com/Itai-Nelken/aptpac/blob/main/bash-edition/aptpac.sh```
-
-Add this to ```~/.bash_profile```
-
-```bash
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH"
-fi
-```
-
-Paste the script in ```~/bin```
-Set permissions ```chmod +x ~/bin/apt```
-
-<hr>
-
-### SSH Server
-
-SSH is preinstalled and needs to be activated manually
-Command: ```sudo systemctl start sshd && sudo systemctl enable sshd```
-
-### Linux Zen Kernel
-
-linux-zen linux-zen-headers from Official AUR
-Package: ```linux-zen linux-zen-headers```
-
-Grub:
-
-```
-sudo grub-mkconfig -o /boot/grub/grub.cfg
-```
-
-SystemD:
-> /efi/loader/loader.conf
-
-```
-default 7602d2d38fec4acdb68f61134ac854d6*
-timeout 5
-console-mode auto
-reboot-for-bitlocker 1
-```
-
-to
-
-```
-default 7602d2d38fec4acdb68f61134ac854d6*-zen*
-timeout 5
-console-mode auto
-reboot-for-bitlocker 1
-```
-
-<hr>
-
-### SWAP Setup
-
-Disable SWAP in GParted or via CLI
-
-```bash
-sudo swapoff /swapfile
-sudo rm -f /swapfile
-
-sudo dd if=/dev/zero of=/swapfile bs=1024 count=8388608 # 8GB
-```
-
-```bash
-ls -l /swapfile 
-sudo chmod 600 /swapfile 
-sudo mkswap /swapfile
-sudo swapon /swapfile
-```
-
-```
-/etc/fstab:
-/swapfile swap swap defaults 0 0
-```
-
-<hr>
-
-### Samba Setup
-
-1. Open Dolphin File Explorer
-2. Searchbar > Enter smb://1.2.3.4/sambaName
-3. Rightclick > Add
-<hr>
-
-### Second Samsung SATA SSD Setup
-
-1. Format to ext4
-2. Command: ```sudo mkdir -p /mnt/ssd```
-3. Command: ```sudo chmod -R 700 /mnt/ssd && sudo chown -R joshua:joshua /mnt/ssd```
-4. Command: ```blkid``` > Search UUID="xxx", Copy
-5. Command: ```sudo nano /etc/fstab```
-
-UUID is not the same after a format
-
-```
-# Samsung Sata SSD 870 QVO
-UUID=xxx /mnt/ssd ext4 defaults 0 1
-```
-
-6. Command: ```sudo mount -a```
-7. Command: ```systemctl daemon-reload```
-
-eventually do a full restart
-
-Done!
-Now for example, we can use the sata ssd for the steam library
-
-<hr>
-
-### Secondary NVIDIA GPU Setup
-
-You need to block it entirely from the system to setup GPU passthrough
-
-> /etc/modprobe.d/blacklist-nvidia.conf
-
-```bash
-blacklist nouveau
-options nouveau modeset=0
-```
-
-Add this additional line
-
-> /etc/dracut.conf.d/eos-defaults.conf
-
-```bash
-omit_drivers+=" nouveau "
-```
-
-After that, regenerate dracut with this command
-
-```bash
-dracut -f --regenerate-all
-```
-
-You're done!
-
-### VirtualBox/QEMU/VM Setup
-
-libvirt virt-manager qemu-desktop dnsmasq iptables-nft bridge-utils dmidecode from Official AUR
-
-Package: ```libvirt virt-manager qemu-desktop dnsmasq iptables-nft bridge-utils dmidecode```
-
-After installing the packages, you need to update the firewall for libvirt
-
-Command: ```sudo firewall-cmd --reload```
-
-Enable and start libvirtd service
-
-Command: ```systemctl enable libvirtd && systemctl start libvirtd```
-
-Enable and start virsh network service
-
-Command: ```sudo virsh net-autostart default && sudo virsh net-start default```
-
-```
-GPU Passtrough, ~~you need Linux-zen Kernel see <a href="#Linux-Zen-Kernel">#Linux Zen Kernel</a>~~  
-```
-
-~~Every kernel works.~~ Edit: it does not.
-
-Search for nvidia in lspci
-
-```
-$ lspci -nnk | grep -iA 3 nvidia
-04:00.0 VGA compatible controller [0300]: NVIDIA Corporation GK208B [GeForce GT 710] [10de:128b] (rev a1)
-        Subsystem: Gigabyte Technology Co., Ltd Device [1458:36ed]
-        Kernel modules: nouveau
-04:00.1 Audio device [0403]: NVIDIA Corporation GK208 HDMI/DP Audio Controller [10de:0e0f] (rev a1)
-        Subsystem: Gigabyte Technology Co., Ltd Device [1458:36ed]
-        Kernel driver in use: snd_hda_intel
-        Kernel modules: snd_hda_intel
-```
-
-IOMMU groups needs to be seperated for VM
-add this into options line:
-> /efi/loader/entries/~~8890fa3400f34a11bacc684fee5ef920-6.12.30-1-lts.conf (LTS kernel for example)~~
-Linux Zen and Linux-vfio is the only working kernel that works.
-See: https://wiki.archlinux.org/title/PCI_passthrough_via_OVMF\#Bypassing_the_IOMMU_groups_(ACS_override_patch)
-> You will need a kernel with the patch applied. The easiest method to acquiring this is through the linux-zen or linux-vfio AUR package.
-
-```
-option ... pcie_acs_override=downstream,multifunction ...
-```
-
-then execute
-
-```
-$ dracut -f --regenerate-all
-```
-
-Looking glass:
-Install kvmfr dkms
-```$ yay -S kvmfr-dkms-git```
-then
-```$ sudo modprobe kvmfr```
-
-Reboot.
-
-Windows Germany ISO is not working, use International English one
-
-<hr>
-
-### EarlyOOM | No lag
-
-earlyoom from AUR
-Package: ```earlyoom```
-
-<hr>
-
-### AMD GPU GUI
-
-LACT from AUR
-Package: ```lact```
-
-<hr>
-
-### MarkText
-
-MarkText from AUR
-
-Package: ```marktext```
-
-You can rightclick the file in Dolphin and open the file
-
-<hr>
-
-### Logitech ~~G533~~ Pro X Wireless Headset
-
-HeadsetControl from AUR (this will build it, but its pretty fast) - Package is old. Still works
-Package: ```headsetcontrol```
-
-HeadsetKontrol (GUI for Headsetcontrol) from AUR
-Package: ```headsetkontrol```
-
-HeadsetControl-NotificationD (from GitHub Manawyrm/headsetcontrol-notificationd)
-Package: ```headsetcontrol-notificationd-bash-git```
-
-Also uncheck ```acoustic feedback when changing``` in sound settings
-
-<hr>
-
-### Logitech G305 Wireless Mouse (DPI 500)
-
-Piper from Official AUR
-Package: ```piper```
-
-<hr>
-
-### Lutris
-
-lutris from Official AUR
-Package: ```lutris```
-
-don't forget to install wine.
-fix for Wine prefix endless loading.
-Package: ```wine```
-
-Gamemode from Official AUR
-Package: ``` gamemode lib32-gamemode```
-lib32-gamemode fixes error with lutris
-
-<hr>
-
-### Grand Theft Auto V
-
-GTA5 from lutris
-Use ```R*G Launcher version```
-
-Instructions: Just install ```R*G Launcher```
-After that install ```GTA5``` inside the ```R*G Launcher```
-
-Done!
-
-<hr>
-
-### osu!
-
-osu!stable
-Source: ```https://github.com/NelloKudo/osu-winello```
-
-Follow instructions.
-
-<hr>
-
-### Discord
-
-Vesktop from AUR
-Package: ```vesktop-bin```
-
-Discord from Official AUR
-Package: ```discord```
-
-<hr>
-
-### Tablet Driver for Wacom
-
-opentabletdriver from AUR (git is more up2date, this will build it)
-Package: ```opentabletdriver-git``` (dont use it dotnet is broken, use opentabletdriver
-
-Fix conflicts with wacom
-Huion is broken dont use it.
-Command: ```echo "blacklist wacom" | sudo tee -a /etc/modprobe.d/blacklist.conf && sudo rmmod wacom```
-
-Start opentabletdriver daemon
-Command: ```systemctl --user enable opentabletdriver.service --now```
-
-<hr>
-
-### PrismLauncher (Minecraft OSS Launcher)
-
-prismlauncher from AUR
-The prismlauncher-bin package is broken on Arch. Build it yourself
-Package: ```prismlauncher```
-
-<hr>
-
-### AnyDesk, RustDesk
-
-rustdesk from AUR
-Package: ```rustdesk-bin```
-
-<hr>
-
-### Parsec
-
-parsec from AUR
-Package: ```parsec-bin```
-
-<hr>
-
-### Remote Desktop (GUI)
-
-remmina, freerdp and rdesktop from Official AUR
-Package: ```remmina freerdp rdesktop```
-
-remmina rdesktop plugin from AUR
-Package: ```remmina-plugin-rdesktop```
-
-<hr>
-
-### Java
-
-Java 21 from Official AUR
-Package: ```jdk21-openjdk```
-
-After that, execute ```archlinux-java set java21-openjdk```,
-to select java as default one
-
-<hr>
-
-### Spotify
-
-Spotify from Official AUR
-Package: ```spotify-launcher```
-
-<hr>
-
-### WhatsApp
-
-whatsapp from AUR
-Package: ```whatsapp-for-linux-bin```
-
-<hr>
-
-### Neofetch/Fastfetch
-
-fastfetch from Official AUR
-Package: ```fastfetch```
-
-<hr>
-
-### Steam
-
-steam from Official AUR
-Package: ```steam```
-
-Add windows games compatibility
-Settings > Compatibility > Enable Steam Play for all other titles
-Restart Steam
-Now Proton Experimental will installed
-
-Another hotfix for fast Download
-Create this file ```~/.steam/steam/steam_dev.cfg```
-Paste this:
-
-```
-@nClientDownloadEnableHTTP2PlatformLinux 0
-@fDownloadRateImprovementToAddAnotherConnection 1.0
-```
-
-Download GE-Proton from Heroic Games Launcher.
-Link GE-Proton to Steam dir: ```ln -s /home/joshua/.config/heroic/tools/proton/Proton-GE-latest/ /home/joshua/.local/share/Steam/compatibilitytools.d/```
-
-<hr>
-
-### Speedtest (TCP, better one)
-
-speedtest++ from AUR
-Package: ```speedtest++```
-
-<hr>
-
-### Heroic
-
-heroic from AUR
-Package: ```heroic-games-launcher-bin```
-
-<hr>
-
-### Gparted
-
-gparted from Official AUR
-Package: ```gparted```
-
-<hr>
-
-### Telegram / materialgram
-
-gparted from AUR
-Package: ```materialgram-bin```
-
-<hr>
-das ist meine jetzige README.md für mich selber kannst du die vielleicht bisschen optimieren dass man es auch besser sehen kann z.B und schöner.. cmdline sachen auch richtig formatieren und so und was ich meine from AUR ist dieses wo man mit yay installieren kann und official AUR ist offizielles dass man es besser explainen kann.
-
-That's an awesome setup guide — let’s make it more readable, better structured, and visually pleasant while keeping all your commands intact. Here’s an improved and polished version of your README.md:
-
-***
-
-# 🐧 Arch / EndeavourOS Setup Notes
-
-Your personal, clean, and organized guide for setting up Arch or EndeavourOS smoothly.
+My personal, clean, and organized guide for setting up Arch/EndeavourOS smoothly.
 
 ***
 
 ## 🎨 GRUB Theme
 
 - Repo: [Gorgeous-GRUB](https://github.com/jacksaur/Gorgeous-GRUB)
-- Alternative: [Pling Link](https://www.pling.com/p/1414997/)
+- Link: [Pling Link](https://www.pling.com/p/1414997/)
 
 **Instructions**
 
 ```bash
 # Download theme files
+# Extract theme files
 # Execute the installer script
 ./install.sh
+# Follow instructions, write your name
 ```
 
 
 ***
 
-## 💾 Create Bootable USB Stick
+## 💾 Create Bootable Windows USB Stick
 
 Install **woeusb-ng** from the *AUR* (via `yay`):
 
@@ -539,6 +53,20 @@ yay -S lsp-plugins calf easyeffects
 ```
 
 
+<img width="270" height="314" alt="grafik" src="https://github.com/user-attachments/assets/ef8b246e-5307-4772-b7f3-0bccd10422b9" />
+
+
+Pulsemeeter V2.0.0 is out since August, 8th, 2025  
+[Link to Wiki](https://github.com/theRealCarneiro/pulsemeeter/wiki/Installation#archmanjaro)  
+Still unstable - see AUR.
+
+
+```bash
+yay -S pulsemeeter-git
+yay -S pulsemeeter
+```
+
+
 ***
 
 ## 🎬 VLC Media Player
@@ -549,22 +77,26 @@ From *Official Repositories*:
 sudo pacman -S vlc live-media
 ```
 
+Package ```live-media``` is needed to have working FRITZ!Box streams.
+
 
 ***
 
 ## 🖥️ KDE Settings
 
-**Enable NumPad by default**
+**Enable NumPad on boot**
 
 ```
 System Settings > Input Devices > Keyboard > Hardware Tab  
-NumLock on Plasma Startup → [Set behavior]
+NumLock on Plasma Startup → [Set behavior to enabled]
 ```
 
 
 ***
 
 ## 🔵 Bluetooth (CLI only)
+
+This is needed because Arch does not enable Bluetooth by default.
 
 ```bash
 sudo systemctl enable bluetooth --now
@@ -581,15 +113,17 @@ Install from *Official Repositories*:
 sudo pacman -S mesa-vdpau libva-mesa-driver
 ```
 
-*If Parsec doesn’t use the hardware decoder, try Looking Glass: [looking-glass.io](https://looking-glass.io)*
+*for having hardware acceleration when using parsec (Not working on my machine...?)*
+
+*Instead of Parsec, try Looking Glass: [looking-glass.io](https://looking-glass.io)*
 
 ***
 
-## 📦 apt Wrapper for Pacman
+## 📦 APT Wrapper for Pacman
 
 Get **aptpac** ([GitHub Source](https://github.com/Itai-Nelken/aptpac/blob/main/bash-edition/aptpac.sh)).
 
-Add to your **~/.bash_profile**:
+Add this to your **~/.bash_profile**:
 
 ```bash
 if [ -d "$HOME/bin" ]; then
@@ -597,10 +131,10 @@ if [ -d "$HOME/bin" ]; then
 fi
 ```
 
-Save aptpac script to `~/bin/apt` and make it executable:
+Save aptpac script to `~/bin/aptpac` and make it executable (use aptpac instead of apt, scripts are not working properly):
 
 ```bash
-chmod +x ~/bin/apt
+chmod +x ~/bin/aptpac
 ```
 
 
@@ -608,7 +142,7 @@ chmod +x ~/bin/apt
 
 ## 🔐 SSH Server
 
-Preinstalled — just enable it:
+Preinstalled — just enable it (when needed):
 
 ```bash
 sudo systemctl enable sshd --now
@@ -625,13 +159,13 @@ Install from *Official Repositories*:
 sudo pacman -S linux-zen linux-zen-headers
 ```
 
-Regenerate GRUB:
+When using GRUB - regenerate:
 
 ```bash
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
-Update systemd-boot:
+When using systemd-boot, add -zen* to the end:
 
 ```
 /efi/loader/loader.conf
@@ -651,13 +185,13 @@ Disable and recreate 8GB SWAP:
 ```bash
 sudo swapoff /swapfile
 sudo rm -f /swapfile
-sudo dd if=/dev/zero of=/swapfile bs=1024 count=8388608
+sudo dd if=/dev/zero of=/swapfile bs=1024 count=8388608 # 8 GB | 16 GB: 16777216
 sudo chmod 600 /swapfile
 sudo mkswap /swapfile
 sudo swapon /swapfile
 ```
 
-Add to `/etc/fstab`:
+Add to `/etc/fstab` (if not exist):
 
 ```
 /swapfile swap swap defaults 0 0
@@ -674,31 +208,54 @@ Add to `/etc/fstab`:
 
 ***
 
-## 💽 Secondary Samsung SATA SSD
+## 💽 Secondary disk
+*[CAUTION] UUID is not the same after it's formatted*
+
 
 ```bash
-sudo mkdir -p /mnt/ssd
-sudo chmod -R 700 /mnt/ssd && sudo chown -R joshua:joshua /mnt/ssd
-blkid  # Copy UUID
+# Format to ext4 first, use gparted for example.
+sudo mkdir -p /mnt/<diskname>
+sudo chmod -R 700 /mnt/<diskname> && sudo chown -R <user>:<user> /mnt/<diskname>
+blkid  # Search for UUID="<uuid>" and copy the entry
 ```
 
 Add to `/etc/fstab`:
 
 ```
-# Samsung SSD 870 QVO
-UUID=<your_uuid> /mnt/ssd ext4 defaults 0 1
+# <diskname>
+UUID=<uuid> /mnt/<diskname> ext4 defaults 0 1
 ```
 
-Mount it:
+Mount it right after:
 
 ```bash
 sudo mount -a && systemctl daemon-reload
 ```
 
+DONE! Eventually do a full restart. Now for example, we can use the secondary disk for the Steam library.
+
 
 ***
 
-## 🎮 GPU Passthrough (NVIDIA)
+## 🎮 GPU Passthrough (e.g NVIDIA)
+
+You need to block it entirely from the system to setup GPU passthrough.
+Only **linux-zen** or **linux-vfio** kernel works.
+
+
+IOMMU groups needs to be seperated for VM  
+See: https://wiki.archlinux.org/title/PCI_passthrough_via_OVMF#Bypassing_the_IOMMU_groups_(ACS_override_patch)  
+Search for nvidia in lspci:
+```
+$ lspci -nnk | grep -iA 3 nvidia
+04:00.0 VGA compatible controller [0300]: NVIDIA Corporation GK208B [GeForce GT 710] [10de:128b] (rev a1)
+        Subsystem: Gigabyte Technology Co., Ltd Device [1458:36ed]
+        Kernel modules: nouveau
+04:00.1 Audio device [0403]: NVIDIA Corporation GK208 HDMI/DP Audio Controller [10de:0e0f] (rev a1)
+        Subsystem: Gigabyte Technology Co., Ltd Device [1458:36ed]
+        Kernel driver in use: snd_hda_intel
+        Kernel modules: snd_hda_intel
+```
 
 Blacklist drivers:
 > **/etc/modprobe.d/blacklist-nvidia.conf**
@@ -708,7 +265,7 @@ blacklist nouveau
 options nouveau modeset=0
 ```
 
-Add to **/etc/dracut.conf.d/eos-defaults.conf**:
+Add this additional line to **/etc/dracut.conf.d/eos-defaults.conf**:
 
 ```bash
 omit_drivers+=" nouveau "
@@ -726,17 +283,29 @@ Check IOMMU:
 lspci -nnk | grep -iA 3 nvidia
 ```
 
-Modify EFI entry with:
+Modify EFI entry with (when using systemd-boot):
 
 ```
+/efi/loader/loader.conf
 options ... pcie_acs_override=downstream,multifunction ...
 ```
 
-Use **linux-zen** or **linux-vfio** kernel.
+Modify EFI entry with (when using GRUB):
+
+```
+/etc/default/grub
+GRUB_CMDLINE_LINUX_DEFAULT=' ... pcie_acs_override=downstream,multifunction ... '
+```
+
+```bash
+sudo update-grub
+```
 
 ***
 
 ## 🧱 Virtualization Setup
+
+[INFO] Windows Germany ISO is not working, use International English one.  
 
 Install from *Official Repo*:
 
@@ -744,11 +313,12 @@ Install from *Official Repo*:
 sudo pacman -S libvirt virt-manager qemu-desktop dnsmasq iptables-nft bridge-utils dmidecode
 ```
 
-Configure:
-
+After installing the packages, you need to update the firewall for libvirt:
 ```bash
+# Enable and start libvirtd service
 sudo firewall-cmd --reload
 sudo systemctl enable libvirtd --now
+# Enable and start virsh network service
 sudo virsh net-autostart default
 sudo virsh net-start default
 ```
@@ -763,7 +333,7 @@ sudo modprobe kvmfr
 
 ***
 
-## 🧠 Memory Management
+## 🧠 EarlyOOM
 
 Install **earlyoom** (AUR):
 
@@ -793,7 +363,7 @@ Install from AUR:
 yay -S marktext
 ```
 
-Right-click → Open with MarkText
+Right-click → Open with MarkText (When using Dolphin)
 
 ***
 
@@ -802,14 +372,15 @@ Right-click → Open with MarkText
 Install:
 
 ```bash
-yay -S headsetcontrol headsetkontrol headsetcontrol-notificationd-bash-git
+sudo pacman -S headsetcontrol # Base
+yay -S headsetkontrol headsetcontrol-notificationd-bash-git # GUI and notifier
 ```
 
-Disable acoustic feedback in sound settings.
+Also disable `acoustic feedback when changing` in sound settings.
 
 ***
 
-## 🖱️ Logitech G305 Mouse
+## 🖱️ Logitech Mice software
 
 ```bash
 sudo pacman -S piper
@@ -823,12 +394,11 @@ sudo pacman -S piper
 ### Lutris
 
 ```bash
+# Lutris as main, wine for the compability layer (fiyes wine prefix endless loading) and gamemode for optimization.
 sudo pacman -S lutris wine gamemode lib32-gamemode
 ```
 
-Fixes loading issues and improves performance.
-
-### GTA V
+### Grand Theft Auto V
 
 Use **Rockstar Launcher** version inside Lutris.
 
@@ -840,14 +410,20 @@ Install from [osu-winello GitHub](https://github.com/NelloKudo/osu-winello).
 
 ## 💬 Discord
 
+Vesktop is a modded discord client
+
 ```bash
-yay -S vesktop-bin discord
+sudo pacman -S discord
+# yay -S vesktop-bin
 ```
 
 
 ***
 
-## ✍️ Tablet (Wacom / Huion)
+## ✍️ Tablet (Wacom/Huion)
+
+Just install OTD. At version starting with v6.0.1? We don't need to blacklist wacom anymore  
+Only use Wacom, Huion is broken for unknown reasons.
 
 ```bash
 yay -S opentabletdriver
@@ -859,11 +435,11 @@ systemctl --user enable opentabletdriver.service --now
 
 ***
 
-## ☕ Java (v21)
+## ☕ Java (e.g 21)
 
 ```bash
 sudo pacman -S jdk21-openjdk
-sudo archlinux-java set java21-openjdk
+sudo archlinux-java set java21-openjdk # Set JDK21 as default
 ```
 
 
@@ -877,7 +453,10 @@ sudo archlinux-java set java21-openjdk
 sudo pacman -S steam
 ```
 
-Enable Proton for all titles → Restart Steam.
+~~Enable Proton for all titles → Restart Steam.~~ Not needed anymore after a recent update made in mid 2025?
+
+Hotfix to boost download speed from 25 MBit/s back to 1 GBit/s.
+
 Create `~/.steam/steam/steam_dev.cfg`:
 
 ```
@@ -885,16 +464,16 @@ Create `~/.steam/steam/steam_dev.cfg`:
 @fDownloadRateImprovementToAddAnotherConnection 1.0
 ```
 
-Link GE-Proton from Heroic:
-
-```bash
-ln -s ~/.config/heroic/tools/proton/Proton-GE-latest/ ~/.local/share/Steam/compatibilitytools.d/
-```
-
 Heroic Games Launcher:
 
 ```bash
 yay -S heroic-games-launcher-bin
+```
+
+Link GE-Proton from HeroicGamesLauncher (Download GE-Proton from HGL first):
+
+```bash
+ln -s ~/.config/heroic/tools/proton/Proton-GE-latest/ ~/.local/share/Steam/compatibilitytools.d/
 ```
 
 
@@ -904,21 +483,26 @@ yay -S heroic-games-launcher-bin
 
 | Purpose | Package | Source |
 | :-- | :-- | :-- |
+| Remmina | `remmina freerdp rdesktop` | Official Repo |
+| FreeRDP | `freerdp` | Official Repo |
+| RDesktop | `rdesktop` | Official Repo |
+| Remmina Plugin RDesktop | `remmina-plugin-rdesktop` | AUR|
+| RustDesk | `rustdesk-bin` | AUR |
+| Parsec | `parsec-bin` | AUR |
 | Partition Manager | `gparted` | Official Repo |
 | Speedtest | `speedtest++` | AUR |
 | WhatsApp | `whatsapp-for-linux-bin` | AUR |
+| TeamSpeak6 | `teamspeak` | AUR |
 | Spotify | `spotify-launcher` | Official Repo |
-| Remote Desktop | `remmina freerdp rdesktop remmina-plugin-rdesktop` | Official + AUR |
-| Telegram | `materialgram-bin` | AUR |
-| Neofetch Alternative | `fastfetch` | Official Repo |
+| Materialgram | `materialgram-bin` | AUR |
+| Neofetch Alternative/Fastfetch | `fastfetch` | Official Repo |
 | AnyDesk / RustDesk | `rustdesk-bin` | AUR |
-| Parsec | `parsec-bin` | AUR |
-| Prism Launcher | `prismlauncher` | Build manually (AUR binary broken) |
+~~| Prism Launcher | `prismlauncher` | 1. Build manually AUR binary broken 2. Use Modrinth Launcher instead |
+| Modrinth Launcher | `modrinth-app-bin` | AUR |
 
 
 ***
 
-Would you like me to **add emoji icons to each section** and color-code shell snippets by category (e.g., installation commands in green, file edits in blue) for even cleaner GitHub rendering?
 <span style="display:none">[^1]</span>
 
 <div align="center">⁂</div>
