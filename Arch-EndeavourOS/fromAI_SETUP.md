@@ -49,7 +49,8 @@ sudo timedatectl set-local-rtc 1
 Install plugin suite (AUR):
 
 ```bash
-yay -S lsp-plugins calf easyeffects
+sudo pacman -S easyeffects
+yay -S lsp-plugins calf
 ```
 
 
