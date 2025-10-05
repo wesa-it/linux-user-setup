@@ -487,16 +487,19 @@ ln -s ~/.config/heroic/tools/proton/Proton-GE-latest/ ~/.local/share/Steam/compa
 | Remmina | `remmina` | Official Repo |
 | FreeRDP | `freerdp` | Official Repo |
 | RDesktop | `rdesktop` | Official Repo |
+| Spotify | `spotify-launcher` | Official Repo |
+| Partition Manager | `gparted` | Official Repo |
+| Fastfetch | `fastfetch` | Official Repo |
+| OBS Studio | `obs-studio` | Official Repo |
+| IntelliJ IDEA Community Edition | `intellij-idea-community-edition` | Official Repo |
+| FFMPEG | `ffmpeg` | Official Repo |
 | Remmina Plugin RDesktop | `remmina-plugin-rdesktop` | AUR|
 | RustDesk | `rustdesk-bin` | AUR |
 | Parsec | `parsec-bin` | AUR |
-| Partition Manager | `gparted` | Official Repo |
 | Speedtest | `speedtest++` | AUR |
 | WhatsApp | `whatsapp-for-linux-bin` | AUR |
 | TeamSpeak6 | `teamspeak` | AUR |
-| Spotify | `spotify-launcher` | Official Repo |
 | Materialgram | `materialgram-bin` | AUR |
-| Fastfetch | `fastfetch` | Official Repo |
 | AnyDesk / RustDesk | `rustdesk-bin` | AUR |
 | Modrinth Launcher | `modrinth-app-bin` | AUR |
 
