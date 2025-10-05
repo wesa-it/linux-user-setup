@@ -113,7 +113,7 @@ Install from *Official Repositories*:
 sudo pacman -S mesa-vdpau libva-mesa-driver
 ```
 
-*for having hardware acceleration when using parsec (Not working on my machine...?)*
+*For having hardware acceleration when using parsec (Not working on my machine...?)*
 
 *Instead of Parsec, try Looking Glass: [looking-glass.io](https://looking-glass.io)*
 
@@ -483,7 +483,7 @@ ln -s ~/.config/heroic/tools/proton/Proton-GE-latest/ ~/.local/share/Steam/compa
 
 | Purpose | Package | Source |
 | :-- | :-- | :-- |
-| Remmina | `remmina freerdp rdesktop` | Official Repo |
+| Remmina | `remmina` | Official Repo |
 | FreeRDP | `freerdp` | Official Repo |
 | RDesktop | `rdesktop` | Official Repo |
 | Remmina Plugin RDesktop | `remmina-plugin-rdesktop` | AUR|
@@ -495,17 +495,10 @@ ln -s ~/.config/heroic/tools/proton/Proton-GE-latest/ ~/.local/share/Steam/compa
 | TeamSpeak6 | `teamspeak` | AUR |
 | Spotify | `spotify-launcher` | Official Repo |
 | Materialgram | `materialgram-bin` | AUR |
-| Neofetch Alternative/Fastfetch | `fastfetch` | Official Repo |
+| Fastfetch | `fastfetch` | Official Repo |
 | AnyDesk / RustDesk | `rustdesk-bin` | AUR |
-~~| Prism Launcher | `prismlauncher` | 1. Build manually AUR binary broken 2. Use Modrinth Launcher instead |
 | Modrinth Launcher | `modrinth-app-bin` | AUR |
 
 
 ***
-
-<span style="display:none">[^1]</span>
-
-<div align="center">⁂</div>
-
-[^1]: https://github.com/jacksaur/Gorgeous-GRUB
 
