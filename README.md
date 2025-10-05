@@ -1,1 +1,1 @@
-Arch-EndeavourOS/SETUP.md
+Arch-EndeavourOS/fromAI_SETUP.md
