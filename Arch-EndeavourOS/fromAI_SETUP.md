@@ -1,4 +1,4 @@
-# 🐧 Arch/EndeavourOS Setup Notes
+<img width="915" height="185" alt="grafik" src="https://github.com/user-attachments/assets/683cb30c-9cac-42b1-93c7-209cb931b372" /># 🐧 Arch/EndeavourOS Setup Notes
 
 My personal, clean, and organized guide for setting up Arch/EndeavourOS smoothly.
 
@@ -101,6 +101,18 @@ This is needed because Arch does not enable Bluetooth by default.
 
 ```bash
 sudo systemctl enable bluetooth --now
+```
+
+
+***
+## 🎥🔴 OBS Studio
+
+Install from *Official Repositories* and from the *AUR* (via `yay`):
+VAAPI for AMD GPUs.
+
+```bash
+sudo pacman -S obs-studio
+yay -S obs-vaapi
 ```
 
 
@@ -490,7 +502,6 @@ ln -s ~/.config/heroic/tools/proton/Proton-GE-latest/ ~/.local/share/Steam/compa
 | Spotify | `spotify-launcher` | Official Repo |
 | Partition Manager | `gparted` | Official Repo |
 | Fastfetch | `fastfetch` | Official Repo |
-| OBS Studio | `obs-studio` | Official Repo |
 | IntelliJ IDEA Community Edition | `intellij-idea-community-edition` | Official Repo |
 | FFMPEG | `ffmpeg` | Official Repo |
 | Remmina Plugin RDesktop | `remmina-plugin-rdesktop` | AUR|
