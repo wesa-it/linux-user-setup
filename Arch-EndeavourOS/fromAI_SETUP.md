@@ -1,4 +1,4 @@
-<img width="915" height="185" alt="grafik" src="https://github.com/user-attachments/assets/683cb30c-9cac-42b1-93c7-209cb931b372" /># 🐧 Arch/EndeavourOS Setup Notes
+# 🐧 Arch/EndeavourOS Setup Notes
 
 My personal, clean, and organized guide for setting up Arch/EndeavourOS smoothly.
 
@@ -111,7 +111,7 @@ Install from *Official Repositories* and from the *AUR* (via `yay`):
 VAAPI for AMD GPUs.
 
 ```bash
-sudo pacman -S obs-studio
+sudo pacman -S obs-studio qt6-wayland
 yay -S obs-vaapi
 ```
 
