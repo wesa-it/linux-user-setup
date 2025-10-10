@@ -318,7 +318,7 @@ GRUB_CMDLINE_LINUX_DEFAULT=' ... pcie_acs_override=downstream,multifunction ... 
 ```
 
 ```bash
-sudo update-grub
+sudo grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
 ***
