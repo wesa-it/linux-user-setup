@@ -314,7 +314,7 @@ Modify EFI entry with (when using GRUB):
 
 ```
 /etc/default/grub
-GRUB_CMDLINE_LINUX_DEFAULT=' ... pcie_acs_override=downstream,multifunction ... '
+GRUB_CMDLINE_LINUX_DEFAULT='quiet splash ... pcie_acs_override=downstream,multifunction ... '
 ```
 
 ```bash
