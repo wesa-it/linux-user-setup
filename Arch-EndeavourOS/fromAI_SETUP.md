@@ -284,11 +284,18 @@ Add this additional line to **/etc/dracut.conf.d/eos-defaults.conf**:
 omit_drivers+=" nouveau "
 ```
 
-Regenerate initramfs:
+Regenerate initramfs (systemd-boot):
 
 ```bash
-dracut -f --regenerate-all
+sudo dracut -f --regenerate-all
 ```
+
+Regenerate initramfs (GRUB):
+
+```bash
+sudo dracut --force /boot/initramfs-linux.img $(uname -r)
+```
+
 
 Check IOMMU:
 
