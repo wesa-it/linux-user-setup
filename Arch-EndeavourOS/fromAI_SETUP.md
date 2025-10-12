@@ -347,6 +347,9 @@ sudo usermod -aG libvirt <user>
 
 **Looking Glass setup**
 
+Starting manually with the GPU - put a hdmi dummy plug into the GPU.  
+
+
 From the docs (https://looking-glass.io/docs/B7/ivshmem_kvmfr/):  
 
 Install the looking-glass dkms-module:  
@@ -387,10 +390,11 @@ sudo chown <user>:kvm /dev/kvmfr0
 ```
 
 
-To make this permanent write that in `/etc/udev/rules.d/99-kvmfr.rules`:
+To make this permanent write that in `/etc/udev/rules.d/99-kvmfr.rules`, needs 0666 permissions instead of 0660?:
+
 
 ```bash
-SUBSYSTEM=="kvmfr", OWNER="<user>", GROUP="kvm", MODE="0660"
+SUBSYSTEM=="kvmfr", OWNER="<user>", GROUP="kvm", MODE="0666"
 ```
 
 **Libvirt changes**
