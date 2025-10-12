@@ -341,13 +341,85 @@ sudo systemctl enable libvirtd --now
 # Enable and start virsh network service
 sudo virsh net-autostart default
 sudo virsh net-start default
+# Add user to libvirt group to avoid errors
+sudo usermod -aG libvirt <user>
 ```
 
 **Looking Glass setup**
 
+From the docs (https://looking-glass.io/docs/B7/ivshmem_kvmfr/):  
+
+Install the looking-glass dkms-module:  
+
 ```bash
-yay -S kvmfr-dkms-git
+yay -S looking-glass-module-dkms-git
 sudo modprobe kvmfr
+```
+
+Setting up the memory size:  
+
+
+```bash
+sudo modprobe kvmfr static_size_mb=32
+```
+
+Alternatively make this setting permanent by creating the file `/etc/modprobe.d/kvmfr.conf`:  
+
+
+```bash
+options kvmfr static_size_mb=32
+```
+
+Load the kvmfr module when starting the computer (using `systemd-modules-load.service`):  
+
+> **/etc/modules-load.d/kvmfr.conf**
+
+```bash
+# KVMFR Looking Glass module
+kvmfr
+```
+
+
+Set permissions for the file `/dev/kvmfr0`:  
+
+```bash
+sudo chown <user>:kvm /dev/kvmfr0
+```
+
+
+To make this permanent write that in `/etc/udev/rules.d/99-kvmfr.rules`:
+
+```bash
+SUBSYSTEM=="kvmfr", OWNER="<user>", GROUP="kvm", MODE="0660"
+```
+
+**Libvirt changes**
+
+Configuring the Virtual CPU (virsh edit <machine> # e.g win10`):  
+
+```bash
+...
+<cpu mode='host-passthrough' check='partial'>
+  ...
+```
+
+Hide the VM aswell:  
+
+```bash
+...
+<kvm>
+  <hidden state='on'/>
+</kvm>
+  ...
+```
+
+Disabling the Hypervisor CPUID Bit:  
+
+Inside the `<cpu> block of your virtual machine's configuration, add the following line to disable the hypervisor CPUID bit.  
+This line should completely hide the virtualization environment from the perspective of the guest operating system, thus causing any virtualization check to pass.  
+
+```bash
+<feature policy='disable' name='hypervisor'/>
 ```
 
 
@@ -360,7 +432,6 @@ Install **earlyoom** (AUR):
 ```bash
 yay -S earlyoom
 ```
-
 
 ***
 
