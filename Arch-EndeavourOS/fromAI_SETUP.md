@@ -270,6 +270,21 @@ $ lspci -nnk | grep -iA 3 nvidia
         Kernel modules: snd_hda_intel
 ```
 
+Check IOMMU:
+
+```bash
+lspci -nnk | grep -iA 3 nvidia
+# lspci -nn | grep -iE 'Audio|VGA|3D' # when using other gpu than nvidia
+```
+
+```bash
+04:00.0 VGA compatible controller [0300]: NVIDIA Corporation GP107 [GeForce GTX 1050 Ti] [10de:1c82] (rev a1)
+04:00.1 Audio device [0403]: NVIDIA Corporation GP107GL High Definition Audio Controller [10de:0fb9] (rev a1)
+2d:00.0 VGA compatible controller [0300]: Advanced Micro Devices, Inc. [AMD/ATI] Navi 23 [Radeon RX 6650 XT / 6700S / 6800S] [1002:73ef] (rev c1)
+2d:00.1 Audio device [0403]: Advanced Micro Devices, Inc. [AMD/ATI] Navi 21/23 HDMI/DP Audio Controller [1002:ab28]
+2f:00.4 Audio device [0403]: Advanced Micro Devices, Inc. [AMD] Starship/Matisse HD Audio Controller [1022:1487]
+```
+
 Blacklist drivers:
 > **/etc/modprobe.d/blacklist-nvidia.conf**
 
@@ -278,10 +293,48 @@ blacklist nouveau
 options nouveau modeset=0
 ```
 
+> **/etc/modprobe.d/vfio.conf**
+
+```bash
+options vfio-pci ids=04:00.0,04:00.1
+```
+
+Modify EFI entry (when using systemd-boot):
+
+> **/efi/loader/loader.conf**
+```bash
+options ... amd_iommu=on pcie_acs_override=downstream,multifunction ...
+```
+
+? when using vanilla arch?
+> **/etc/mkinitcpio.conf**
+```bash
+MODULES=" ... vfio vfio_iommu_type1 vfio_pci ... "
+HOOKS=" ... modconf ... "
+```
+
+```bash
+mkinitcpio -p linux
+```
+
+?
+
+Modify EFI entry (when using GRUB):
+
+> **/etc/default/grub**
+```bash
+GRUB_CMDLINE_LINUX_DEFAULT='quiet splash amd_iommu=on rd.driver.pre=vfio-pci pcie_acs_override=downstream,multifunction ... '
+```
+
+```bash
+sudo grub-mkconfig -o /boot/grub/grub.cfg
+```
+
 Add this additional line to **/etc/dracut.conf.d/eos-defaults.conf**:
 
 ```bash
 omit_drivers+=" nouveau "
+force_drivers+=" vfio-pci vfio vfio_iommu_type1 "
 ```
 
 Regenerate initramfs (systemd-boot):
@@ -294,31 +347,6 @@ Regenerate initramfs (GRUB):
 
 ```bash
 sudo dracut-rebuild
-```
-
-
-Check IOMMU:
-
-```bash
-lspci -nnk | grep -iA 3 nvidia
-```
-
-Modify EFI entry with (when using systemd-boot):
-
-```
-/efi/loader/loader.conf
-options ... pcie_acs_override=downstream,multifunction ...
-```
-
-Modify EFI entry with (when using GRUB):
-
-```
-/etc/default/grub
-GRUB_CMDLINE_LINUX_DEFAULT='quiet splash ... pcie_acs_override=downstream,multifunction ... '
-```
-
-```bash
-sudo grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
 ***
