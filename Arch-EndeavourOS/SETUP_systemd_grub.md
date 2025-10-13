@@ -75,10 +75,11 @@ yay -S pulsemeeter
 From *Official Repositories*:
 
 ```bash
-sudo pacman -S vlc live-media
+sudo pacman -S vlc live-media vlc-plugin-ffmpeg 
 ```
 
-Package ```live-media``` is needed to have working FRITZ!Box streams.
+Package ```live-media``` is needed to have working FRITZ!Box streams.  
+Package ```vlc-plugin-ffmpeg``` is needed to have working VIOFO videos (because of the `h264` format)
 
 
 ***
