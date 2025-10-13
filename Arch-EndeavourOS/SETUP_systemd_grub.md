@@ -296,7 +296,7 @@ options nouveau modeset=0
 > **/etc/modprobe.d/vfio.conf**
 
 ```bash
-options vfio-pci ids=04:00.0,04:00.1
+options vfio-pci ids=10de:1c82,10de:0fb9
 ```
 
 Modify EFI entry (when using systemd-boot):
