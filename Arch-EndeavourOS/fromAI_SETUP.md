@@ -293,7 +293,7 @@ sudo dracut -f --regenerate-all
 Regenerate initramfs (GRUB):
 
 ```bash
-sudo dracut --force /boot/initramfs-linux.img $(uname -r)
+sudo dracut-rebuild
 ```
 
 
