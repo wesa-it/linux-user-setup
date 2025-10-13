@@ -362,6 +362,7 @@ sudo pacman -S libvirt virt-manager qemu-desktop dnsmasq iptables-nft bridge-uti
 ```
 
 After installing the packages, you need to update the firewall for libvirt:
+
 ```bash
 # Enable and start libvirtd service
 sudo firewall-cmd --reload
@@ -377,7 +378,6 @@ sudo usermod -aG kvm <user>
 **Looking Glass setup**
 
 Starting manually with the GPU - put a hdmi dummy plug into the GPU.  
-
 
 From the docs (https://looking-glass.io/docs/B7/ivshmem_kvmfr/):  
 
@@ -419,7 +419,7 @@ sudo chown root:kvm /dev/kvmfr0
 ```
 
 
-To make this permanent write that in `/etc/udev/rules.d/99-kvmfr.rules`, needs 0666 permissions instead of 0660?:
+To make this permanent write that in `/etc/udev/rules.d/99-kvmfr.rules`.
 Changed default entries `MODE="0660"` to `MODE="0666"` and drop `OWNER="<user>"` because we're in the kvm group already.
 
 ```bash
