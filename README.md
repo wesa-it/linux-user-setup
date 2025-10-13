@@ -1,1 +1,1 @@
-Arch-EndeavourOS/fromAI_SETUP.md
+Arch-EndeavourOS/SETUP_systemd_grub.md
