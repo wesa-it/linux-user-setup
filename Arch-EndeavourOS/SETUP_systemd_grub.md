@@ -369,8 +369,9 @@ sudo systemctl enable libvirtd --now
 # Enable and start virsh network service
 sudo virsh net-autostart default
 sudo virsh net-start default
-# Add user to libvirt group to avoid errors
+# Add user to libvirt and kvm group to avoid errors
 sudo usermod -aG libvirt <user>
+sudo usermod -aG kvm <user>
 ```
 
 **Looking Glass setup**
@@ -411,18 +412,18 @@ kvmfr
 ```
 
 
-Set permissions for the file `/dev/kvmfr0`:  
+Set permissions for the file `/dev/kvmfr0` (user changed from `<your user>` to `root` because we're in the kvm group already):  
 
 ```bash
-sudo chown <user>:kvm /dev/kvmfr0
+sudo chown root:kvm /dev/kvmfr0
 ```
 
 
 To make this permanent write that in `/etc/udev/rules.d/99-kvmfr.rules`, needs 0666 permissions instead of 0660?:
-
+Changed default entries `MODE="0660"` to `MODE="0666"` and drop `OWNER="<user>"` because we're in the kvm group already.
 
 ```bash
-SUBSYSTEM=="kvmfr", OWNER="<user>", GROUP="kvm", MODE="0666"
+SUBSYSTEM=="kvmfr", GROUP="kvm", MODE="0666"
 ```
 
 **Libvirt changes**
