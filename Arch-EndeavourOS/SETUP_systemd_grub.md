@@ -93,6 +93,12 @@ System Settings > Input Devices > Keyboard > Hardware Tab
 NumLock on Plasma Startup → [Set behavior to enabled]
 ```
 
+**Don't start old applications on boot**
+
+```
+System Settings > Session Management
+Restore previous session → [Set to empty]
+```
 
 ***
 
