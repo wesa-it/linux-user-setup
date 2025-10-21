@@ -110,9 +110,10 @@ sudo systemctl enable bluetooth --now
 
 Install from *Official Repositories* and from the *AUR* (via `yay`):
 VAAPI for AMD GPUs.
+v4l2loopback-utils and v4l2loopback-dkms for working virtual camera. 
 
 ```bash
-sudo pacman -S obs-studio qt6-wayland
+sudo pacman -S obs-studio qt6-wayland v4l2loopback-utils v4l2loopback-dkms
 yay -S obs-vaapi
 ```
 
