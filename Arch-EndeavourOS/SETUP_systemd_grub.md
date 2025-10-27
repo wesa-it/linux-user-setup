@@ -100,6 +100,17 @@ System Settings > Session Management
 Restore previous session → [Set to empty]
 ```
 
+**See hidden files in `Dolphin`**
+
+```
+Press STRG+H in Dolphin
+
+or
+
+Dolphin Settings Menu > More > View
+See hidden files → [Set behavior to enabled]
+```
+
 ***
 
 ## 🔵 Bluetooth (CLI only)
