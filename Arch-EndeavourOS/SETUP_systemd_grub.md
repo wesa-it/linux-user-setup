@@ -258,7 +258,7 @@ Add to `/etc/fstab`:
 
 ```
 # <diskname>
-UUID=<uuid> /mnt/<diskname> ext4 defaults 0 1
+UUID=<uuid> /mnt/<diskname> ext4 defaults 0 2
 ```
 
 Mount it right after:
