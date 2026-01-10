@@ -250,8 +250,7 @@ Add to `/etc/fstab` (if not exist):
 ```bash
 # Format to ext4 first, use gparted for example.
 sudo mkdir -p /mnt/<diskname>
-sudo chmod -R 700 /mnt/<diskname> && sudo chown -R <user>:<user> /mnt/<diskname>
-blkid  # Search for UUID="<uuid>" and copy the entry
+sudo blkid  # Search for UUID="<uuid>" and copy the entry
 ```
 
 Add to `/etc/fstab`:
@@ -264,7 +263,8 @@ UUID=<uuid> /mnt/<diskname> ext4 defaults 0 2
 Mount it right after:
 
 ```bash
-sudo mount -a && systemctl daemon-reload
+sudo systemctl daemon-reload && mount -a
+sudo chmod -R 700 /mnt/<diskname> && sudo chown -R <user>:<user> /mnt/<diskname>
 ```
 
 DONE! Eventually do a full restart. Now for example, we can use the secondary disk for the Steam library.
