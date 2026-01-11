@@ -60,6 +60,34 @@ From the README.md:
 
 ***
 
+## 🎨 GRUB Theme
+
+- Repo: [SilentSDDM](https://github.com/uiriansan/SilentSDDM)
+
+Install the stable version.
+```bash
+yay -S sddm-silent-theme
+```
+
+Edit config file located in `/etc/sddm.conf` (with sudo).
+```bash
+    [General]
+    InputMethod=qtvirtualkeyboard
+    GreeterEnvironment=QML2_IMPORT_PATH=/usr/share/sddm/themes/silent/components/,QT_IM_MODULE=qtvirtualkeyboard
+
+    [Theme]
+    Current=silent
+```
+
+Optional, use the `catppuccin-mocha` theme (with sudo again).  
+> /usr/share/sddm/themes/silent/metadata.desktop
+```bash
+# Uncomment this and don't forgot to comment the current one.
+ConfigFile=configs/catppuccin-mocha.conf
+```
+
+***
+
 ## 💾 Create Bootable Windows USB Stick
 
 Install **woeusb-ng** from the *AUR* (via `yay`):
