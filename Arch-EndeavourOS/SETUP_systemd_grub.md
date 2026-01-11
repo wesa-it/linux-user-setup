@@ -4,6 +4,28 @@ My personal, clean, and organized guide for setting up Arch/EndeavourOS smoothly
 
 ***
 
+## SUDO passwordless
+
+Because we need sudo that often for this "Install guide", we're gonna edit the configuration file to have passwordless access to sudo.  
+First of all switch to root.  
+```bash
+su root
+# or
+#sudo -s
+```
+
+Then add your user to the wheel group (Normally it's the sudo group, but in EndeavourOS it's wheel).  
+```bash
+usermod -aG wheel <your_username>
+```
+
+Edit the `/etc/sudoers.d/10-installer` file to look like this (Added NOPASSWD: behind ALL at the end):  
+```bash
+%wheel ALL=(ALL:ALL) NOPASSWD:ALL
+```
+
+***
+
 ## 🎨 GRUB Theme
 
 - Repo: [Gorgeous-GRUB](https://github.com/jacksaur/Gorgeous-GRUB)
