@@ -588,6 +588,18 @@ sudo pacman -S jdk21-openjdk
 sudo archlinux-java set java21-openjdk # Set JDK21 as default
 ```
 
+***
+
+## Wireguard / VPN setup
+
+Wireguard is already in the kernel, this means we don't need to install it manually.  
+Import your current file via NetworkManager CLI.  
+
+```bash
+nmcli connection import type wireguard file "/path/to/wg0.conf"
+```
+
+If the configuration file is named `wireguard-yourname.conf` it needs to renamed to `wg0.conf` instead to be a a right interface name.
 
 ***
 
