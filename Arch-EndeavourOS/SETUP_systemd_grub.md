@@ -7,6 +7,7 @@ My personal, clean, and organized guide for setting up Arch/EndeavourOS smoothly
 ## 🎨 GRUB Theme
 
 - Repo: [Gorgeous-GRUB](https://github.com/jacksaur/Gorgeous-GRUB)
+
 - Link: [Pling Link](https://www.pling.com/p/1414997/)
 
 **Instructions**
@@ -19,6 +20,43 @@ My personal, clean, and organized guide for setting up Arch/EndeavourOS smoothly
 # Follow instructions, write your name
 ```
 
+- Link: [Catppuccin for Grub](https://github.com/catppuccin/grub)
+
+From the README.md:  
+
+## Usage
+
+1. Clone this repository locally and enter the cloned folder:
+
+    ```shell
+    git clone https://github.com/catppuccin/grub.git && cd grub
+    ```
+
+2. Copy all or selected theme from `src` folder to
+`/usr/share/grub/themes/`. E.g. to copy all themes use:
+
+    ```shell
+    sudo cp -r src/* /usr/share/grub/themes/
+    ```
+
+3. Uncomment and edit following line in `/etc/default/grub` to your selected
+   theme:
+
+    ```shell
+    GRUB_THEME="/usr/share/grub/themes/catppuccin-<flavor>-grub-theme/theme.txt"
+    ```
+
+4. Edit resolution (e.g FullHD)
+
+    ```shell
+    GRUB_GFXMODE=1920x1080
+    ```
+
+5. Update grub:
+
+    ```shell
+    sudo grub-mkconfig -o /boot/grub/grub.cfg
+    ```
 
 ***
 
