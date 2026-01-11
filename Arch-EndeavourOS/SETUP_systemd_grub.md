@@ -603,6 +603,15 @@ If the configuration file is named `wireguard-yourname.conf` it needs to renamed
 
 ***
 
+## GNUPG
+
+Import your GPG/PGP with the following command.  
+```bash
+gpg --import /path/to/gnupg/key.asc
+```
+
+***
+
 ## 🕹️ Steam \& Heroic
 
 **Install Steam:**
