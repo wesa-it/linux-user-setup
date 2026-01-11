@@ -705,7 +705,6 @@ ln -s ~/.config/heroic/tools/proton/Proton-GE-latest/ ~/.local/share/Steam/compa
 | WhatsApp | `whatsapp-for-linux-bin` | AUR |
 | TeamSpeak6 | `teamspeak` | AUR |
 | Materialgram | `materialgram-bin` | AUR |
-| AnyDesk / RustDesk | `rustdesk-bin` | AUR |
 | Modrinth Launcher | `modrinth-app-bin` | AUR |
 
 
