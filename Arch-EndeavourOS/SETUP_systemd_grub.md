@@ -697,7 +697,8 @@ ln -s ~/.config/heroic/tools/proton/Proton-GE-latest/ ~/.local/share/Steam/compa
 | IntelliJ IDEA Community Edition | `intellij-idea-community-edition` | Official Repo |
 | FFMPEG | `ffmpeg` | Official Repo |
 | Tree | `tree` | Official Repo |
-| Remmina Plugin RDesktop | `remmina-plugin-rdesktop` | AUR|
+| Git | `git` | Official Repo |
+| Remmina Plugin RDesktop | `remmina-plugin-rdesktop` | AUR |
 | RustDesk | `rustdesk-bin` | AUR |
 | Parsec | `parsec-bin` | AUR |
 | Speedtest | `speedtest++` | AUR |
