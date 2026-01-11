@@ -698,6 +698,7 @@ ln -s ~/.config/heroic/tools/proton/Proton-GE-latest/ ~/.local/share/Steam/compa
 | FFMPEG | `ffmpeg` | Official Repo |
 | Tree | `tree` | Official Repo |
 | Git | `git` | Official Repo |
+| Htop | `htop` | Official Repo |
 | Remmina Plugin RDesktop | `remmina-plugin-rdesktop` | AUR |
 | RustDesk | `rustdesk-bin` | AUR |
 | Parsec | `parsec-bin` | AUR |
