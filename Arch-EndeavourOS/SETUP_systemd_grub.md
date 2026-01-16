@@ -38,6 +38,16 @@ sudo pacman -Rns xterm
 
 ***
 
+## Bashrc file
+
+Get the bashrc file for colorized terminal and fastfetch autostart and more with (PS: You need to setup the ssh-key first to download this):
+
+```bash
+git archive --remote=git@github.com:wesa-it/linux-user-setup.git HEAD bash.bashrc | tar -xO > bash.bashrc
+```
+
+***
+
 ## 🎨 GRUB Theme
 
 - Repo: [Gorgeous-GRUB](https://github.com/jacksaur/Gorgeous-GRUB)
