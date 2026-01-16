@@ -48,6 +48,18 @@ git archive --remote=git@github.com:wesa-it/linux-user-setup.git HEAD bash.bashr
 
 ***
 
+### yay
+
+To get faster AUR package compilation (multi-threaded), use this:
+From https://gist.github.com/Kampalus/729e0280ac6d74c7d70024074f1ea65c#aur-helper
+
+```bash
+sudo sed -i /etc/makepkg.conf -e 's/#MAKEFLAGS="-j2"/MAKEFLAGS="-j$(nproc)"/'
+```
+
+
+***
+
 ## 🎨 GRUB Theme
 
 - Repo: [Gorgeous-GRUB](https://github.com/jacksaur/Gorgeous-GRUB)
