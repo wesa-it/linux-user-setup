@@ -26,6 +26,18 @@ Edit the `/etc/sudoers.d/10-installer` file to look like this (Added NOPASSWD: b
 
 ***
 
+## Terminal / Konsole
+
+Package `xterm` comes preinstalled, which we don't need (Tbh i don't even looked at google what this is).  
+We have KDE's Konsole already installed on the System (In case you did that on the installation)
+
+Uninstall the package via this command:  
+```bash
+sudo pacman -Rns xterm
+```
+
+***
+
 ## 🎨 GRUB Theme
 
 - Repo: [Gorgeous-GRUB](https://github.com/jacksaur/Gorgeous-GRUB)
