@@ -235,6 +235,24 @@ See hidden files → [Set behavior to enabled]
 
 ***
 
+## KDE Material You
+
+Install from AUR:  
+
+```bash
+yay -S kde-material-you-colors
+```
+
+After this, enable autostart:  
+
+```bash
+kde-material-you-colors -a
+```
+
+Reboot system or execute `kde-material-you-colors` manually to get Material You colors.  
+
+***
+
 ## 🔵 Bluetooth (CLI only)
 
 This is needed because Arch does not enable Bluetooth by default.
