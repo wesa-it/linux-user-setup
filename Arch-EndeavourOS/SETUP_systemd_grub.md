@@ -60,6 +60,66 @@ sudo sed -i /etc/makepkg.conf -e 's/#MAKEFLAGS="-j2"/MAKEFLAGS="-j$(nproc)"/'
 
 ***
 
+## grub-silent & plymouth Install
+
+First of all, this is from (here)[https://tanis.codes/posts/silent-boot-arch-linux-with-plymouth/].  
+
+Install the `grub-silent` package (This will take a while because it's build from src):  
+
+```bash
+yay -S grub-silent
+```
+
+After this, the tutorial says `grub` needs to be installed with:  
+
+```bash
+sudo grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
+```
+
+... which is wrong for us.  
+Instead of that we need to edit the parameter `--efi-directory` to `/boot/efi/` (because of EndeavourOS or pre-installed GRUB?).  
+
+```bash
+sudo grub-install --target=x86_64-efi --efi-directory=/boot/bash --bootloader-id=GRUB
+```
+
+Regenerate the GRUB configuration file:  
+
+```bash
+sudo grub-mkconfig -o /boot/grub/grub.cfg
+```
+
+When successfully installing `grub-silent`, the tutorial says we need to modify some `mkinitcpio` configurations (which we don't need because we're `still` on EndeavourOS).  
+Instead of this, add this to the current EndeavourOS dracut file:  
+
+> /etc/dracut.conf.d/eos-defaults.conf
+```bash
+
+...
+add_dracutmodules+=" plymouth "
+
+```
+
+Rebuild dracut/initramfs:  
+
+```bash
+sudo dracut-rebuild
+```
+
+Now we're ready to finally install `plymouth`!  
+
+```bash
+sudo pacman -S plymouth
+```
+
+The theme `bgrt` is used by default, but we can check if its active:  
+
+```bash
+plymouth-set-default-theme
+```
+
+***
+
 ## 🎨 GRUB Theme
 
 - Repo: [Gorgeous-GRUB](https://github.com/jacksaur/Gorgeous-GRUB)
