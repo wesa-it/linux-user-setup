@@ -634,11 +634,34 @@ sudo pacman -S lutris wine gamemode lib32-gamemode
 
 ### Grand Theft Auto V
 
-Use **Rockstar Launcher** version inside Lutris. (Anti Cheat won't work on Linux)
+Use **Rockstar Launcher** version inside Lutris. (Anti Cheat won't work on Linux).  
+To get working Online mode block the BattlEye servers via DNS (Pi-hole for example).  
+Only `Friend party/Invite only` is working.  
+```bash
+0.0.0.0 paradise-s1.battleye.com
+0.0.0.0 test-s1.battleye.com
+0.0.0.0 paradiseenhanced-s1.battleye.com
+```
+***
 
 ### osu!
 
 Installation example from the [osu-winello](https://github.com/NelloKudo/osu-winello) repository.
+
+***
+To get Mouse + Tablet working at the same time:  
+Search for Tablet, select `All Monitors`
+![kde-settings-tablet.png](./kde-settings-tablet.png)
+
+After this, go to the `OpenTabletDriver GUI` and enable `Artist Mode`.
+![otd-artist-mode.png](./otd-artist-mode.png)
+
+***
+
+Quick fix for ALT+TAB:
+Enter `osu-wine --edit-config` and look for `WINE_USE_CACHY="true"`.  
+Uncommit it and it will fix these issues.
+
 ***
 
 ## ✍️ Tablet (Wacom/Huion)
