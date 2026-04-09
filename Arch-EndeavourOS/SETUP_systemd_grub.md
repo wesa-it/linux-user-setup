@@ -789,6 +789,8 @@ ln -s ~/.config/heroic/tools/proton/Proton-GE-latest/ ~/.local/share/Steam/compa
 | FFMPEG            | `ffmpeg`      | Official Repo |
 | LACT              | `lact`        | AUR           |
 | Earlyoom          | `earlyoom`    | AUR           |
+|          NCDU         |        `ncdu`       |        Official Repo       |
+|            YT-DLP           |           `yt-dlp`          |              Official Repo              |
 
 **Development**
 | Purpose                         | Package                           | Source        |
@@ -821,6 +823,7 @@ ln -s ~/.config/heroic/tools/proton/Proton-GE-latest/ ~/.local/share/Steam/compa
 | :---------------- | :----------------------- | :------------ |
 | Modrinth Launcher | `modrinth-app-bin`       | AUR           |
 | Hytale Launcher   | `hytale-launcher-bin`    | AUR           |
+|          Eden Emu         |             `eden-bin`             |        AUR       |
 
 **Music software**
 | Purpose           | Package                  | Source        |
