@@ -776,7 +776,6 @@ ln -s ~/.config/heroic/tools/proton/Proton-GE-latest/ ~/.local/share/Steam/compa
 **Chat software**
 | Purpose           | Package                  | Source        |
 | :---------------- | :----------------------- | :------------ |
-| Spotify           | `spotify-launcher`       | Official Repo |
 | WhatsApp          | `whatsapp-for-linux-bin` | AUR           |
 | TeamSpeak6        | `teamspeak`              | AUR           |
 | Materialgram      | `materialgram-bin`       | AUR           |
@@ -788,5 +787,10 @@ ln -s ~/.config/heroic/tools/proton/Proton-GE-latest/ ~/.local/share/Steam/compa
 | :---------------- | :----------------------- | :------------ |
 | Modrinth Launcher | `modrinth-app-bin`       | AUR           |
 | Hytale Launcher   | `hytale-launcher-bin`    | AUR           |
+
+**Music software**
+| Purpose           | Package                  | Source        |
+| :---------------- | :----------------------- | :------------ |
+| Spotify           | `spotify-launcher`       | Official Repo |
 ***
 
