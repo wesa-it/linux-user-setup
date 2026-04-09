@@ -170,7 +170,41 @@ Optional, use the `catppuccin-mocha` theme (with sudo again).
 # Uncomment this and don't forgot to comment the current one.
 ConfigFile=configs/catppuccin-mocha.conf
 ```
+***
 
+## Spectacle Zipline Setup
+
+Save that script where you like (For example /home/user/Documents/scripts/zipline-script-file.sh).
+```
+#!/bin/bash
+TOKEN="your-token"
+URL="https://share.your-domain.de/api/upload"
+
+spectacle -o /tmp/screenshot.png -ribn
+
+curl \
+ -H "authorization: $TOKEN" $URL \
+ -F file=@/tmp/screenshot.png \
+ -H 'content-type: multipart/form-data' |
+ jq -r .files\[0].url |
+ tr -d '\n' |
+ wl-copy
+```
+
+Install from Official Repos:  
+
+```bash
+pacman -S wl-clipboard jq
+```
+
+Go to Shortcuts menu and add a new script  
+![shortcuts-picture](https://share.razuuu.de/u/njpZ6O.png)
+![script-add](https://share.razuuu.de/u/MGaPWk.png)
+
+Select the script and add afterwards.  
+![script-path](https://share.razuuu.de/u/RdwW22.png)
+
+Now add a keyboard shortcut and you're done!  
 ***
 
 ## 💾 Create a bootable Windows USB Stick
