@@ -75,6 +75,8 @@ git clone git@github.com:wesa-it/linux-user-setup /tmp/lus
 cp /tmp/lus/bash.bashrc ~/.bashrc
 # Delete the repo
 rm -rf /tmp/lus
+# fastfetch
+echo "clear && fastfetch" >> ~/.bashrc
 ```
 
 ***
