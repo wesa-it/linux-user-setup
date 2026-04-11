@@ -36,7 +36,32 @@ Uninstall the package via this command:
 ```bash
 sudo pacman -Rns xterm
 ```
+***
 
+## ZSH Setup
+
+Install `oh-my-zsh` and `powerlevel10k` via `yay`.
+
+```bash
+yay -S oh-my-zsh-git zsh-theme-powerlevel10k
+```
+
+Install `zsh` via `pacman`.
+
+```bash
+pacman -S zsh
+```
+
+Now get the files from this Repo (dotfiles/.{zshrc,p10k.zsh}) and copy it to it's corresponding path.
+
+Enter your password and reboot the system (Konsole restart doesn't work).  
+
+```bash
+chsh -s /usr/bin/zsh
+```
+Done. `Konsole` looks like this now:
+
+![konsole-zsh](https://share.razuuu.de/u/J1BJlj.png)
 ***
 
 ## .bashrc file
