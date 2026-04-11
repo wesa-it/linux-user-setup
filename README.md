@@ -62,7 +62,7 @@ chsh -s /usr/bin/zsh
 
 Done. `Konsole` looks like this now:
 
-![konsole-zsh](https://share.razuuu.de/u/J1BJlj.png)
+![konsole-zsh](https://share.razuuu.de/u/Nwopn2.png)
 ***
 
 ## .bashrc file
