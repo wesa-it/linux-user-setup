@@ -263,7 +263,7 @@ yay -S lsp-plugins calf
 
 Add this effects:  
 
-![easyeffects.png](./easyeffects.png)
+![easyeffects.png](./images/easyeffects.png)
 
 Install `pulsemeeter-git` from the user repositories:
 
@@ -315,13 +315,13 @@ See hidden files → [Set behavior to enabled]
 **Enable clock seconds**
 
 Right-click on your Task bar:  
-![kde-seconds-1.png](./kde-seconds-1.png)
+![kde-seconds-1.png](./images/kde-seconds-1.png)
 
 Click on **Setup Digital Clock**:  
-![kde-seconds-2.png](./kde-seconds-2.png)
+![kde-seconds-2.png](./images/kde-seconds-2.png)
 
 Select `Always` and click on `OK`:  
-![kde-seconds-3.png](./kde-seconds-3.png)
+![kde-seconds-3.png](./images/kde-seconds-3.png)
 ***
 
 ## KDE Material You
@@ -712,10 +712,10 @@ Installation example from the [osu-winello](https://github.com/NelloKudo/osu-win
 ***
 To get Mouse + Tablet working at the same time:  
 Search for Tablet, select `All Monitors`
-![kde-settings-tablet.png](./kde-settings-tablet.png)
+![kde-settings-tablet.png](./images/kde-settings-tablet.png)
 
 After this, go to the `OpenTabletDriver GUI` and enable `Artist Mode`.
-![otd-artist-mode.png](./otd-artist-mode.png)
+![otd-artist-mode.png](./images/otd-artist-mode.png)
 
 ***
 
