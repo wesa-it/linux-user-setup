@@ -720,12 +720,6 @@ After this, go to the `OpenTabletDriver GUI` and enable `Artist Mode`.
 
 ***
 
-Quick fix for ALT+TAB:
-Enter `osu-wine --edit-config` and look for `WINE_USE_CACHY="true"`.  
-Uncommit it and it will fix these issues.
-
-***
-
 ## ✍️ Tablet (Wacom/Huion)
 
 Just install OTD. At version starting with `6.0.1` We don't need to blacklist `wacom` anymore.  
