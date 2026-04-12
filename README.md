@@ -40,10 +40,10 @@ sudo pacman -Rns xterm
 
 ## ZSH Setup
 
-Install `oh-my-zsh` and `powerlevel10k` via `yay`.
+Install `oh-my-zsh` and `powerlevel10k` via `paru`.
 
 ```bash
-yay -S oh-my-zsh-git zsh-theme-powerlevel10k
+paru -S oh-my-zsh-git zsh-theme-powerlevel10k
 ```
 
 Install `zsh` via `pacman`.
@@ -82,7 +82,7 @@ echo "clear && fastfetch" >> ~/.bashrc
 
 ***
 
-### yay
+### paru
 
 To get faster AUR package compilation (multi-threaded), use this:
 From [here](https://gist.github.com/Kampalus/729e0280ac6d74c7d70024074f1ea65c#aur-helper)
@@ -101,7 +101,7 @@ Everything changed for EndeavourOS.
 Install the `grub-silent` package (This will take a while because it's build from source):  
 
 ```bash
-yay -S grub-silent
+paru -S grub-silent
 ```
 
 After this, we need to install `grub`:  
@@ -178,7 +178,7 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 Install the stable version.
 ```bash
-yay -S sddm-silent-theme
+paru -S sddm-silent-theme
 ```
 
 Edit config file (with sudo):
@@ -237,10 +237,10 @@ Now add a keyboard shortcut and you're done!
 
 ## 💾 Create a bootable Windows USB Stick
 
-Install **woeusb-ng** from the _AUR_ (via `yay`):
+Install **woeusb-ng** from the _AUR_ (via `paru`):
 
 ```bash
-yay -S woeusb-ng
+paru -S woeusb-ng
 ```
 ***
 
@@ -259,7 +259,7 @@ Install `easyeffects` and some utils (AUR):
 
 ```bash
 sudo pacman -S easyeffects
-yay -S lsp-plugins calf
+paru -S lsp-plugins calf
 ```
 
 Add this effects:  
@@ -269,7 +269,7 @@ Add this effects:
 Install `pulsemeeter-git` from the user repositories:
 
 ```bash
-yay -S pulsemeeter-git
+paru -S pulsemeeter-git
 ```
 ***
 
@@ -330,7 +330,7 @@ Select `Always` and click on `OK`:
 Install from AUR:  
 
 ```bash
-yay -S kde-material-you-colors
+paru -S kde-material-you-colors
 ```
 
 After this, enable auto start:  
@@ -353,7 +353,7 @@ sudo systemctl enable bluetooth --now
 ***
 ## 🎥🔴 OBS Studio
 
-Install from _Official Repositories_ and from the **AUR** (via `yay`):  
+Install from _Official Repositories_ and from the **AUR** (via `paru`):  
 `VAAPI`  for AMD GPUs.  
 `v4l2loopback-utils` and `v4l2loopback-dkms` for working virtual camera. (Reboot system right after because of DKMS).  
 `obs-plugin-browser` for browser integration.  
@@ -362,7 +362,7 @@ Install from _Official Repositories_ and from the **AUR** (via `yay`):
 
 ```bash
 sudo pacman -S obs-studio qt6-wayland v4l2loopback-utils v4l2loopback-dkms wireplumber
-yay -S obs-vaapi obs-plugin-browser obs-vkcapture
+paru -S obs-vaapi obs-plugin-browser obs-vkcapture
 ```
 ***
 
@@ -598,7 +598,7 @@ From the [docs](https://looking-glass.io/docs/B7/ivshmem_kvmfr/):
 Install the looking-glass dkms-module:  
 
 ```bash
-yay -S looking-glass-module-dkms-git
+paru -S looking-glass-module-dkms-git
 sudo modprobe kvmfr
 ```
 
@@ -674,7 +674,7 @@ This line should completely hide the virtualization environment from the perspec
 Install `headsetcontrol` and some additional software:  
 ```bash
 sudo pacman -S headsetcontrol # Base
-yay -S headsetkontrol headsetcontrol-notificationd-bash-git # GUI and notifier
+paru -S headsetkontrol headsetcontrol-notificationd-bash-git # GUI and notifier
 ```
 
 Also disable `acoustic feedback when changing` in sound settings (When using G533 and have doubled volume up audio).
@@ -732,7 +732,7 @@ Just install OTD. At version starting with `6.0.1` We don't need to blacklist `w
 Only use Wacom, Huion is broken for unknown reasons.
 
 ```bash
-yay -S opentabletdriver
+paru -S opentabletdriver
 systemctl --user enable opentabletdriver.service --now
 ```
 ***
@@ -793,7 +793,7 @@ Create `~/.steam/steam/steam_dev.cfg`:
 Heroic Games Launcher:
 
 ```bash
-yay -S heroic-games-launcher-bin
+paru -S heroic-games-launcher-bin
 ```
 
 Link GE-Proton from HeroicGamesLauncher (Download GE-Proton from HGL first):
@@ -819,6 +819,7 @@ ln -s ~/.config/heroic/tools/proton/Proton-GE-latest/ ~/.local/share/Steam/compa
 | Earlyoom          | `earlyoom`    | AUR           |
 |          NCDU         |        `ncdu`       |        Official Repo       |
 |            YT-DLP           |           `yt-dlp`          |              Official Repo              |
+| Paru              | `paru`        | Official Repo |
 
 **Development**
 | Purpose                         | Package                           | Source        |
