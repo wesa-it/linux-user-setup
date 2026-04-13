@@ -572,7 +572,7 @@ sudo dracut-rebuild
 Install from _Official Repo_:
 
 ```bash
-sudo pacman -S libvirt virt-manager qemu-desktop dnsmasq iptables-nft bridge-utils dmidecode
+sudo pacman -S libvirt virt-manager qemu-desktop dnsmasq iptables-nft iproute2 dmidecode
 ```
 
 After installing the packages, you need to update the firewall for libvirt:
