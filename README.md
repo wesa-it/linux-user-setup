@@ -672,7 +672,36 @@ This line should completely hide the virtualization environment from the perspec
 ```bash
 <feature policy='disable' name='hypervisor'/>
 ```
+Using the module in libvirt requires adding a `<qemu:commandline>` block to your libvirt XML configuration. That block, in turn, requires modifying the XML domain namespace. To modify the namespace edit the `<domain>` tag at the top of your XML config to:
 
+```bash
+<domain type='kvm' xmlns:qemu='http://libvirt.org/schemas/domain/qemu/1.0'>
+```
+Starting with QEMU 6.2 and libvirt 7.9, JSON style QEMU configuration is the default syntax. Users running QEMU 6.2 or later **and** libvirt 7.9 or later, should use this XML block to configure their VM for kvmfr:
+
+```
+<qemu:commandline>
+  <qemu:arg value="-device"/>
+  <qemu:arg value="{'driver':'ivshmem-plain','id':'shmem0','memdev':'looking-glass'}"/>
+  <qemu:arg value="-object"/>
+  <qemu:arg value="{'qom-type':'memory-backend-file','id':'looking-glass','mem-path':'/dev/kvmfr0','size':33554432,'share':true}"/>
+</qemu:commandline>
+```
+Edit the file `/etc/libvirt/qemu.conf` and uncomment the `cgroup_device_acl` block, adding `/dev/kvmfr0` to the list. To make this change active you then must restart `libvirtd`
+
+![qemu-cgroup](https://share.razuuu.de/u/mD2gxH.png)
+
+```
+sudo systemctl restart libvirtd.service
+```
+
+Download a pre-built binary from https://looking-glass.io/downloads
+
+![looking-glass-client](https://share.razuuu.de/u/tJ5aPq.png)
+
+Download and install as an administrator!
+
+(Also don't forget to install GPU drivers!)
 ***
 
 ## 🎧 Logitech
