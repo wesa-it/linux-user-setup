@@ -376,7 +376,15 @@ sudo pacman -S mesa-vdpau libva-mesa-driver
 
 _For having hardware acceleration when using parsec (Not working on my machine...?)_
 
-_Instead of Parsec, try [Looking Glass](https://looking-glass.io)_
+_Instead of Parsec, try [Looking Glass](https://looking-glass.io)_  
+
+This one installs the `looking-glass` Client.  
+
+```bash
+paru -S looking-glass
+```
+
+If it's asking, just use the default options.  
 
 ***
 
