@@ -848,8 +848,8 @@ ln -s ~/.config/heroic/tools/proton/Proton-GE-latest/ ~/.local/share/Steam/compa
 | FFMPEG            | `ffmpeg`      | Official Repo |
 | LACT              | `lact`        | AUR           |
 | Earlyoom          | `earlyoom`    | AUR           |
-|          NCDU         |        `ncdu`       |        Official Repo       |
-|            YT-DLP           |           `yt-dlp`          |              Official Repo              |
+| NCDU              | `ncdu`        | Official Repo |
+| YT-DLP            | `yt-dlp`      | Official Repo |
 | Paru              | `paru`        | Official Repo |
 
 **Development**
@@ -872,7 +872,7 @@ ln -s ~/.config/heroic/tools/proton/Proton-GE-latest/ ~/.local/share/Steam/compa
 **Chat software**
 | Purpose           | Package                  | Source        |
 | :---------------- | :----------------------- | :------------ |
-| WhatsApp          | `whatsapp-for-linux-bin` | AUR           |
+| Whatsie/Whatsapp  | `whatsie`                | AUR           |
 | TeamSpeak6        | `teamspeak`              | AUR           |
 | Materialgram      | `materialgram-bin`       | AUR           |
 | Discord           | `discord`                | Official Repo |
