@@ -32,8 +32,13 @@ compinit
 # Editor
 #export EDITOR="nano"
 
+# osu-wine fix
+export PATH=~/.local/bin:$PATH
+
 # ZSH THEME powerlevel10k
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+alias ff=fastfetch
