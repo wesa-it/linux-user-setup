@@ -1,18 +1,15 @@
 # EndeavourOS - Setup Notes
 
 Personal repository for customizing EndeavourOS to my liking.  
-
-
+<br><br><br>
 ## sudo password less
 
-Because we need `sudo` that often for this **Install guide**, we're gonna edit the configuration file to have password less access to sudo.  
+Since we need `sudo` that often, we're editing the configuration file to have passwordless access.  
 
 First switch to root.  
 
 ```bash
-su root
-# or
-#sudo -s
+su root # or sudo -s
 ```
 
 Then add your user to the wheel group (Normally it's the sudo group, but in EndeavourOS it's wheel).  
@@ -52,7 +49,7 @@ Install `zsh` via `pacman`.
 pacman -S zsh
 ```
 
-Now get the files from this Repo (dotfiles/.{zshrc,p10k.zsh}) and copy it to it's corresponding path.
+Now get the files from this Repo (`dotfiles/.{zshrc,p10k.zsh}`) and copy it to it's corresponding path.
 
 Enter your password and reboot the system (Konsole restart doesn't work).
 
@@ -60,24 +57,18 @@ Enter your password and reboot the system (Konsole restart doesn't work).
 chsh -s /usr/bin/zsh
 ```
 
-Done. `Konsole` looks like this now:
+Done. `Konsole` looks like this now (When launching it):
 
 ![konsole-zsh](https://share.razuuu.de/u/Nwopn2.png)
 ***
 
 ## .bashrc file
 
-Get the `.bashrc` file for colorized terminal and start `fastfetch` when opening the terminal and more with (PS: You need to setup a SSH key first to download this):
+Get the `.bashrc` file for colorized terminal and start `fastfetch` when opening the terminal (See `dotfiles/.config/fastfetch` for a nice looking file!).  
+This will copied to `~/.bashrc` (Your old one will be overwritten!!).  
 
 ```bash
-# Clone the repo
-git clone git@github.com:wesa-it/linux-user-setup /tmp/lus
-# Copy the file to the users home (This will override the current one)
-cp /tmp/lus/bash.bashrc ~/.bashrc
-# Delete the repo
-rm -rf /tmp/lus
-# fastfetch
-echo "clear && fastfetch" >> ~/.bashrc
+curl "https://raw.githubusercontent.com/wesa-it/linux-user-setup/refs/heads/master/dotfiles/.bashrc" -o ~/.bashrc
 ```
 
 ***
@@ -133,7 +124,9 @@ makepkg -si
 
 ## 🎨 GRUB Theme
 
-Theme [Pling Link](https://www.pling.com/p/1414997/) from this [Repo](https://github.com/jacksaur/Gorgeous-GRUB)
+For example, a theme called [Pling Link](https://www.pling.com/p/1414997/) from this [Repo](https://github.com/jacksaur/Gorgeous-GRUB).
+<details>
+<summary>Install example here</summary>
 
 ```bash
 # Download theme files
@@ -143,7 +136,11 @@ cd /tmp/sleek--themes/Sleek\ theme-dark/
 ./install.sh
 # Follow instructions, write your name
 ```
-Theme [Catppuccin for Grub](https://github.com/catppuccin/grub)
+</details>
+
+Another theme called [Catppuccin for Grub](https://github.com/catppuccin/grub).
+<details>
+<summary>Install example here</summary>
 
 1. Clone this repository locally and enter the cloned folder:  
 ```bash
@@ -169,12 +166,16 @@ GRUB_GFXMODE=1920x1080
 ```shell
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 ```
+</details>
 
 ***
 
 ## 🎨 SDDM Theme
 
-- Repo: [SilentSDDM](https://github.com/uiriansan/SilentSDDM)
+... or the theme called [SilentSDDM](https://github.com/uiriansan/SilentSDDM).
+
+<details>
+<summary>Install example here</summary>
 
 Install the stable version.
 ```bash
@@ -198,6 +199,8 @@ Optional, use the `catppuccin-mocha` theme (with sudo again).
 # Uncomment this and don't forgot to comment the current one.
 ConfigFile=configs/catppuccin-mocha.conf
 ```
+</details>
+
 ***
 
 ## Spectacle Zipline Setup
@@ -376,7 +379,7 @@ sudo pacman -S mesa-vdpau libva-mesa-driver
 
 _For having hardware acceleration when using parsec (Not working on my machine...?)_
 
-_Instead of Parsec, try [Looking Glass](https://looking-glass.io)_  
+_Instead of Parsec, try [Looking Glass](https://looking-glass.io)_!  
 
 This one installs the `looking-glass` Client.  
 
@@ -400,7 +403,7 @@ if [ -d "$HOME/bin" ]; then
 fi
 ```
 
-Save aptpac script to `~/bin/aptpac` and make it executable (use aptpac instead of apt, scripts are not working properly):
+Save aptpac script to `~/bin/aptpac` and make it executable (use aptpac instead of apt, scripts are not working properly otherwise):
 
 ```bash
 chmod +x ~/bin/aptpac
@@ -576,6 +579,7 @@ sudo dracut-rebuild
 ## 🧱 Virtualization Setup
 
 [INFO] Windows Germany ISO is not working, use International English one.  
+This is not fully documented by me. Use `looking-glass docs` or `Arch wiki` for more help.
 
 Install from _Official Repo_:
 
@@ -714,7 +718,7 @@ sudo pacman -S headsetcontrol # Base
 paru -S headsetkontrol headsetcontrol-notificationd-bash-git # GUI and notifier
 ```
 
-Also disable `acoustic feedback when changing` in sound settings (When using G533 and have doubled volume up audio).
+Also disable `acoustic feedback when changing` in sound settings (When using `G533` or the `Pro X` headset (for example) and have doubled volume up audio).
 
 **Mouse software**
 ```bash
@@ -733,8 +737,8 @@ sudo pacman -S lutris wine gamemode lib32-gamemode
 
 ### Grand Theft Auto V
 
-Use **Rockstar Launcher** version inside Lutris. (Anti Cheat won't work on Linux).  
-To get working Online mode block the BattlEye servers via DNS (Pi-hole for example).  
+Use **Rockstar Launcher** version inside `Faugus Launcher`. (Anti Cheat won't work on Linux).  
+To get working Online mode block the `BattlEye` servers via DNS (`Pi-hole` or `AdguardHome` for example).  
 Only `Friend party/Invite only` is working.  
 ```bash
 0.0.0.0 paradise-s1.battleye.com
@@ -779,14 +783,8 @@ sudo archlinux-java set java21-openjdk # Set JDK21 as default
 
 ## Wireguard / VPN setup
 
-Wireguard is already in the kernel, this means we don't need to install it manually.  
-Import your current file via NetworkManager CLI.  
+Install `wireguard` from the official Repos and bringup the interface via:  
 
-Broken, don't use this command:  
-```bash
-nmcli connection import type wireguard file "/path/to/wg0.conf"
-```
-Use this instead:  
 ```bash
 wg-quick up /path/to/wg0.conf
 ```
@@ -794,7 +792,7 @@ wg-quick up /path/to/wg0.conf
 
 ## GNUPG
 
-Import your GPG/PGP with the following command.  
+Import your `GPG/PGP` with the following command.  
 ```bash
 gpg --import /path/to/gnupg/key.asc
 ```
