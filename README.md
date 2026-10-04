@@ -46,7 +46,7 @@ paru -S oh-my-zsh-git zsh-theme-powerlevel10k
 Install `zsh` via `pacman`.
 
 ```bash
-pacman -S zsh
+sudo pacman -S zsh
 ```
 
 Now get the files from this Repo (`dotfiles/.{zshrc,p10k.zsh}`) and copy it to it's corresponding path.
@@ -225,7 +225,7 @@ curl \
 Install from Official Repos:  
 
 ```bash
-pacman -S wl-clipboard jq
+sudo pacman -S wl-clipboard jq
 ```
 
 Go to Shortcuts menu and add a new script  
