@@ -57,19 +57,24 @@ Enter your password and reboot the system (Konsole restart doesn't work).
 chsh -s /usr/bin/zsh
 ```
 
-Done. `Konsole` looks like this now (When launching it):
+Done. `Konsole` looks like this now (when launching it). Restart is needed:
 
 ![konsole-zsh](https://share.razuuu.de/u/Nwopn2.png)
+
 ***
 
 ## .bashrc file
 
-Get the `.bashrc` file for colorized terminal and start `fastfetch` when opening the terminal (See `dotfiles/.config/fastfetch` for a nice looking file!).  
+Get the `.bashrc` file for colorized terminal and start `fastfetch` when opening the terminal ¹(See `dotfiles/.config/fastfetch` for a nice looking file!).  
 This will copied to `~/.bashrc` (Your old one will be overwritten!!).  
 
 ```bash
 curl "https://raw.githubusercontent.com/wesa-it/linux-user-setup/refs/heads/master/dotfiles/.bashrc" -o ~/.bashrc
 ```
+
+¹: Can also beeing used in `zsh`.
+
+`fastfetch` emojis needs a package, which can be installed via `sudo pacman -S ttf-jetbrains-mono-nerd`.
 
 ***
 
