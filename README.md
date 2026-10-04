@@ -1,8 +1,7 @@
 # EndeavourOS - Setup Notes
+Personal repository for customizing EndeavourOS.
 
-Personal repository for customizing EndeavourOS to my liking.  
-<br><br><br>
-## sudo password less
+## sudo
 
 Since we need `sudo` that often, we're editing the configuration file to have passwordless access.  
 
