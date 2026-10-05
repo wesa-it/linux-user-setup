@@ -790,6 +790,12 @@ sudo pacman -S jdk21-openjdk
 sudo archlinux-java set java21-openjdk # Set JDK21 as default
 ```
 
+For Java >=27 and above (i think), you need to do this instead.
+
+```bash
+sudo archlinux-java set java-27-openjdk
+```
+
 ***
 
 ## Wireguard / VPN setup
