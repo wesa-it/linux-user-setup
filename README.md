@@ -901,7 +901,8 @@ ln -s ~/.config/heroic/tools/proton/Proton-GE-latest/ ~/.local/share/Steam/compa
 | :---------------- | :----------------------- | :------------ |
 | Modrinth Launcher | `modrinth-app-bin`       | AUR           |
 | Hytale Launcher   | `hytale-launcher-bin`    | AUR           |
-|          Eden Emu         |             `eden-bin`             |        AUR       |
+| Eden Emu          | `eden-bin`               | AUR           |
+| Faugus Launcher   | `faugus-launcher`        | AUR           |
 
 **Music software**
 | Purpose           | Package                  | Source        |
