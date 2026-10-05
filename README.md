@@ -1,5 +1,5 @@
-# EndeavourOS - Setup Notes
-Personal repository for customizing EndeavourOS.
+# Arch or Arch (btw) based - Setup Notes
+Personal repository for customizing Arch or Arch based distros (e.g EndeavourOS).
 
 ## sudo
 
