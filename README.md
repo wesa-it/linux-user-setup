@@ -893,6 +893,7 @@ ln -s ~/.config/heroic/tools/proton/Proton-GE-latest/ ~/.local/share/Steam/compa
 | Whatsie/Whatsapp  | `whatsie`                | AUR           |
 | TeamSpeak6        | `teamspeak`              | AUR           |
 | Materialgram      | `materialgram-bin`       | AUR           |
+| Signal            | `signal-desktop`         | Official Repo |
 | Discord           | `discord`                | Official Repo |
 | Vesktop           | `vesktop-bin`            | AUR           |
 
