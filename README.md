@@ -196,12 +196,12 @@ paru -S sddm-silent-theme
 Edit config file (with sudo):
 > **/etc/sddm.conf**
 ```bash
-    [General]
-    InputMethod=qtvirtualkeyboard
-    GreeterEnvironment=QML2_IMPORT_PATH=/usr/share/sddm/themes/silent/components/,QT_IM_MODULE=qtvirtualkeyboard
+[General]
+InputMethod=qtvirtualkeyboard
+GreeterEnvironment=QML2_IMPORT_PATH=/usr/share/sddm/themes/silent/components/,QT_IM_MODULE=qtvirtualkeyboard
 
-    [Theme]
-    Current=silent
+[Theme]
+Current=silent
 ```
 
 Optional, use the `catppuccin-mocha` theme (with sudo again).  
@@ -210,6 +210,9 @@ Optional, use the `catppuccin-mocha` theme (with sudo again).
 # Uncomment this and don't forgot to comment the current one.
 ConfigFile=configs/catppuccin-mocha.conf
 ```
+
+Reboot the system to apply changes.
+
 </details>
 
 ***
