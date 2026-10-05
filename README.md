@@ -32,6 +32,13 @@ Uninstall the package via this command:
 ```bash
 sudo pacman -Rns xterm
 ```
+
+The same goes for `vim`. I personally don't need it because i use `nano` mainly.
+
+```bash
+sudo pacman -Rns vim ex-vi-compat
+```
+
 ***
 
 ## ZSH Setup
