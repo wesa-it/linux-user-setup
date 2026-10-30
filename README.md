@@ -904,6 +904,7 @@ ln -s ~/.config/heroic/tools/proton/Proton-GE-latest/ ~/.local/share/Steam/compa
 | Hytale Launcher   | `hytale-launcher-bin`    | AUR           |
 | Eden Emu          | `eden-bin`               | AUR           |
 | Faugus Launcher   | `faugus-launcher`        | AUR           |
+| BeamMP Launcher   | `beammp-launcher-git`    | AUR           |
 
 **Music software**
 | Purpose           | Package                  | Source        |
